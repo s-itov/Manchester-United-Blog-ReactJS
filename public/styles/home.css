@@ -1,0 +1,59 @@
+
+.home {
+    margin-bottom: 20px;
+    padding: 40px;
+  }
+  
+  
+  /* Login page guests users only */
+  .home-page {
+    width: 1400px;
+    height: 760px;
+    padding: 48px;
+    line-height: 80px;
+    border: 1px solid rgba(171, 166, 166, 0.2);
+    border-radius: 12px ;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: absolute;
+  }
+  
+  .home-page h2 {
+    font-size: 48px;
+    margin-bottom: 26px;
+  }
+  
+  .home-page p {
+    font-size: 26px;
+    margin-bottom: 26px;
+  }
+  
+  .home-page a {
+    color: white;
+    background-color: #E71D36;
+    text-decoration: none;
+    padding: 12px 27px;
+    border-radius: 6px;
+    border: none;
+    border: solid 2px transparent;
+    transition: background-color 0.3s;
+    margin-right: 20px;
+  }
+  
+  .home-page a:hover {
+    cursor: pointer;
+    border: solid 2px red;
+    background-color: white;
+    color: #E71D36;
+    border: solid 2px #E71D36;
+    padding: 12px 27px;
+  }
+   
+  
+  .home-page  img {
+    position: absolute;
+    height: 550px;
+    left: 1000px;
+    bottom: 0px;
+  }
+  

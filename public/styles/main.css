@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Helvetica, sans-serif;
+  }
+  
+  /* Main Content styles */
+  main {
+    min-height: 80vh;
+    padding: 10px;
+  }
+  
+  /* Footer styles */
+  footer {
+    text-align: center;
+    padding: 60px;
+    background-color: #2a2a2a;
+    color: white;
+  }
+
+
+  
