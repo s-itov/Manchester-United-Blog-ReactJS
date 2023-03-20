@@ -1,6 +1,6 @@
 import * as request from './requester';
 
-const baseUrl = "http://localhost:3030/jsonstore/blog/posts/";
+const baseUrl = "http://localhost:3030/jsonstore/blog/posts";
 
 export const getAll = async () => {
     const result = await request.get(baseUrl);
@@ -27,3 +27,9 @@ export const remove = async (blogId) => {
     return result;
 }
 
+
+export const update = async (blogId, blogData) => {
+    const result = await request.put(`${baseUrl}/${blogId}`, blogData);
+
+    return result;
+}
