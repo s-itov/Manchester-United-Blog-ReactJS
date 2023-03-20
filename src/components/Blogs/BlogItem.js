@@ -1,8 +1,12 @@
+import { Link } from "react-router-dom";
+
 export const BlogItem = ({
+    _id,
     imageUrl,
     title,
     category,
     description,
+    onBlogDelete,
 }) =>{
 
     return(
@@ -16,9 +20,9 @@ export const BlogItem = ({
                 <div className="projcard-bar"></div>
                 <div className="projcard-description">{description}</div>
                 <div className="projcard-tagbox">
-                    <button className="projcard-button">READ MORE</button>
-                    <button className="projcard-button">LIKE</button>
-                    <button className="projcard-button">COMMENT</button>
+                    <Link to={`/blogs/${_id}`} className="projcard-button">READ MORE</Link>
+                    <button className="projcard-button">EDIT</button>
+                    <button onClick={() => onBlogDelete(_id)} className="projcard-button">DELETE</button>
                 </div>
             </div>
         </div>

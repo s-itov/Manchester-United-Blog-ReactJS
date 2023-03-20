@@ -11,6 +11,7 @@ import { Header } from "./components/Header/Header";
 import { Home } from "./components/Home/Home";
 import { Login } from "./components/Login/Login";
 import { Register } from "./components/Register/Register";
+import { Details } from './components/Details/Details';
 
 function App() {
     const navigate = useNavigate();
@@ -32,17 +33,25 @@ function App() {
         navigate('/blogs');
     }
 
+    const onBlogDelete = async (id) => {
+        await blogService.remove(id);
+
+        setBlogs(state => state.filter(x=> x._id !== id));
+    }
+
+
     return (
         <div id="box">
             <Header />
             <main>
-                <Routes>s
+                <Routes>
                   <Route path='/' element={<Home />} /> 
-                  <Route path='/blogs' element={<Blogs  blogs={blogs}/>} /> 
+                  <Route path='/blogs' element={<Blogs  blogs={blogs} onBlogDelete={onBlogDelete}/>} /> 
                   <Route path='/create' element={<Create onCreateBlogSubmit={onCreateBlogSubmit}/>} /> 
                   <Route path='/authors' element={<Authors />} /> 
                   <Route path='/login' element={<Login />} /> 
                   <Route path='/register' element={<Register />} /> 
+                  <Route path='/blogs/:blogId' element={<Details />} /> 
                 </Routes>
             </main>
             <Footer />

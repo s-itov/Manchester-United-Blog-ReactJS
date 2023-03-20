@@ -9,10 +9,21 @@ export const getAll = async () => {
     return blogs;
 }
 
-export const create = async (blogData) => {
-    const result = await request.post(baseUrl, blogData)
-
-    console.log(result);
+export const getOne = async (blogId) => {
+    const result = await request.get(`${baseUrl}/${blogId}`);
 
     return result;
 }
+
+export const create = async (blogData) => {
+    const result = await request.post(baseUrl, blogData)
+
+    return result;
+}
+
+export const remove = async (blogId) => {
+    const result = await request.del(`${baseUrl}/${blogId}`);
+
+    return result;
+}
+
