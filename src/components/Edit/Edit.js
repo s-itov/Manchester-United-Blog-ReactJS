@@ -1,4 +1,5 @@
-export const Edit = () => {
+export const Edit = ({
+}) => {
     return (
         <section className="create-form">
         <h2>Create Blog Post</h2>

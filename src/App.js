@@ -1,5 +1,6 @@
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { BlogContext } from './contexts/blogContext';
 
 import * as blogService from './services/blogService';
 
@@ -39,15 +40,19 @@ function App() {
         setBlogs(state => state.filter(x=> x._id !== id));
     }
 
+    const contextValue = {
+        onBlogDelete,
+    }
 
     return (
+        <BlogContext.Provider value={contextValue}>
         <div id="box">
             <Header />
             <main>
                 <Routes>
                   <Route path='/' element={<Home />} /> 
-                  <Route path='/blogs' element={<Blogs  blogs={blogs} onBlogDelete={onBlogDelete}/>} /> 
-                  <Route path='/create' element={<Create onCreateBlogSubmit={onCreateBlogSubmit}/>} /> 
+                  <Route path='/blogs' element={<Blogs  blogs={blogs} />} /> 
+                  <Route path='/create' element={<Create onCreateBlogSubmit={onCreateBlogSubmit} />} /> 
                   <Route path='/authors' element={<Authors />} /> 
                   <Route path='/login' element={<Login />} /> 
                   <Route path='/register' element={<Register />} /> 
@@ -56,6 +61,8 @@ function App() {
             </main>
             <Footer />
         </div>
+        </BlogContext.Provider>
+
     );
 }
 

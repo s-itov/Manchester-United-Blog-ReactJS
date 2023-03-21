@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { BlogContext } from "../../contexts/blogContext";
 
 export const BlogItem = ({
     _id,
@@ -6,17 +8,17 @@ export const BlogItem = ({
     title,
     category,
     description,
-    onBlogDelete,
 }) =>{
+
+    const { onBlogDelete } = useContext(BlogContext);
 
     return(
         <div className="projcard projcard-red">
         <div className="projcard-innerbox">
-            <img className="projcard-img"
-                src={imageUrl}/>
+            <img className="projcard-img" src={imageUrl} alt="article"/>
             <div className="projcard-textbox">
                 <div className="projcard-title">{title}</div>
-                <div className="projcard-author">Category <a href="">{category}</a></div>
+                <div className="projcard-author">Category: {category}</div>
                 <div className="projcard-bar"></div>
                 <div className="projcard-description">{description}</div>
                 <div className="projcard-tagbox">

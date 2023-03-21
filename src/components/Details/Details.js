@@ -16,14 +16,14 @@ export const Details = () => {
 
     return (
         <section className="blog-post">
-            <img src={blog.imageUrl} alt="Sports Image" />
+            <img src={blog.imageUrl} alt="sports" />
             <h2 className="blog-post-title">{blog.title}</h2>
             <p className="blog-post-description">{blog.description}</p>
             <div className="blog-post-text">
                 <p>{blog.text}</p>
             </div>
             <div className="blog-post-category">
-                <a href="#">{blog.category}</a>
+                <p>Category: {blog.category} </p>
             </div>
         </section>
     );
