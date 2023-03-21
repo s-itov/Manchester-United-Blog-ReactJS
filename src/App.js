@@ -13,6 +13,7 @@ import { Home } from "./components/Home/Home";
 import { Login } from "./components/Login/Login";
 import { Register } from "./components/Register/Register";
 import { Details } from './components/Details/Details';
+import { Edit } from './components/Edit/Edit';
 
 function App() {
     const navigate = useNavigate();
@@ -40,6 +41,15 @@ function App() {
         setBlogs(state => state.filter(x=> x._id !== id));
     }
 
+
+    const onEditBlogSubmit = async (values) => {
+        const result = await blogService.update(values._id, values);
+
+        setBlogs(state => state.map(x => x._id === values._id ? result : x));
+
+        navigate(`/blogs/${values._id}`);
+    }
+
     const contextValue = {
         onBlogDelete,
     }
@@ -51,12 +61,13 @@ function App() {
             <main>
                 <Routes>
                   <Route path='/' element={<Home />} /> 
-                  <Route path='/blogs' element={<Blogs  blogs={blogs} />} /> 
+                  <Route path='/blogs' element={<Blogs blogs={blogs} />} /> 
                   <Route path='/create' element={<Create onCreateBlogSubmit={onCreateBlogSubmit} />} /> 
                   <Route path='/authors' element={<Authors />} /> 
                   <Route path='/login' element={<Login />} /> 
                   <Route path='/register' element={<Register />} /> 
                   <Route path='/blogs/:blogId' element={<Details />} /> 
+                  <Route path='/blogs/:blogId/edit' element={<Edit onEditBlogSubmit={onEditBlogSubmit}/>} /> 
                 </Routes>
             </main>
             <Footer />

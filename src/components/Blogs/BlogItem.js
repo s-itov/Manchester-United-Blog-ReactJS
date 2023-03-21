@@ -23,7 +23,7 @@ export const BlogItem = ({
                 <div className="projcard-description">{description}</div>
                 <div className="projcard-tagbox">
                     <Link to={`/blogs/${_id}`} className="projcard-button">READ MORE</Link>
-                    <button className="projcard-button">EDIT</button>
+                    <Link to={`/blogs/${_id}/edit`} className="projcard-button">EDIT</Link>
                     <button onClick={() => onBlogDelete(_id)} className="projcard-button">DELETE</button>
                 </div>
             </div>

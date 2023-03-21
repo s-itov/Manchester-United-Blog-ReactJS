@@ -1,5 +1,41 @@
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import * as blogService from '../../services/blogService';
+ 
+
 export const Edit = ({
+    onEditBlogSubmit,
 }) => {
+
+    const { blogId } = useParams();
+
+    const [values, setValues] = useState({
+        _id: '',
+        imageUrl: '',
+        title: '',
+        category: '',
+        description: '',
+        text: '',
+    });
+
+    const onChangeHandler = (e) => {
+        setValues(state => ({...state, [e.target.name]: e.target.value}));
+    }
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        onEditBlogSubmit(values);
+    }
+
+    useEffect(()=>{
+        blogService.getOne(blogId)
+            .then(result => {
+                setValues(result);
+            });
+    },[blogId])
+
+
     return (
         <section className="create-form">
         <h2>Create Blog Post</h2>
