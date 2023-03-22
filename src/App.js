@@ -21,24 +21,28 @@ function App() {
 
     useEffect(() => {
         blogService.getAll()
-        .then(result => {
-            console.log(result);
-            setBlogs(result);
-        })
+            .then(result => {
+                console.log(result);
+                setBlogs(result);
+            })
     }, []);
 
-    const onCreateBlogSubmit  = async (data) => {
+    const onCreateBlogSubmit = async (data) => {
         const newBlog = await blogService.create(data);
-        
+
         setBlogs(state => [...state, newBlog]);
 
         navigate('/blogs');
     }
 
     const onBlogDelete = async (id) => {
-        await blogService.remove(id);
+        const confirmed = window.confirm("Are you sure you want to delete this blog post?");
 
-        setBlogs(state => state.filter(x=> x._id !== id));
+        if (confirmed) {
+            await blogService.remove(id);
+
+            setBlogs(state => state.filter(x => x._id !== id));
+        }
     }
 
 
@@ -56,22 +60,22 @@ function App() {
 
     return (
         <BlogContext.Provider value={contextValue}>
-        <div id="box">
-            <Header />
-            <main>
-                <Routes>
-                  <Route path='/' element={<Home />} /> 
-                  <Route path='/blogs' element={<Blogs blogs={blogs} />} /> 
-                  <Route path='/create' element={<Create onCreateBlogSubmit={onCreateBlogSubmit} />} /> 
-                  <Route path='/authors' element={<Authors />} /> 
-                  <Route path='/login' element={<Login />} /> 
-                  <Route path='/register' element={<Register />} /> 
-                  <Route path='/blogs/:blogId' element={<Details />} /> 
-                  <Route path='/blogs/:blogId/edit' element={<Edit onEditBlogSubmit={onEditBlogSubmit}/>} /> 
-                </Routes>
-            </main>
-            <Footer />
-        </div>
+            <div id="box">
+                <Header />
+                <main>
+                    <Routes>
+                        <Route path='/' element={<Home />} />
+                        <Route path='/blogs' element={<Blogs blogs={blogs} />} />
+                        <Route path='/create' element={<Create onCreateBlogSubmit={onCreateBlogSubmit} />} />
+                        <Route path='/authors' element={<Authors />} />
+                        <Route path='/login' element={<Login />} />
+                        <Route path='/register' element={<Register />} />
+                        <Route path='/blogs/:blogId' element={<Details />} />
+                        <Route path='/blogs/:blogId/edit' element={<Edit onEditBlogSubmit={onEditBlogSubmit} />} />
+                    </Routes>
+                </main>
+                <Footer />
+            </div>
         </BlogContext.Provider>
 
     );
