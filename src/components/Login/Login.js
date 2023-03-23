@@ -1,17 +1,27 @@
-import  { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { BlogContext } from '../../contexts/blogContext';
+
+import { useForm } from '../../hooks/useForm';
 
 export const Login = () => {
+    const { onLoginSubmit } = useContext(BlogContext);
+    const { values, changeHandler, onSubmit } = useForm({
+        email: '',
+        password: '',
+    }, onLoginSubmit);
+
     return (
         <section className="login-form">
             <h2>Login</h2>
-            <form>
+            <form method="POST" onSubmit={onSubmit}>
                 <div className="form-group">
                     <label htmlFor="e-mail">Email</label>
-                    <input type="text" id="e-mail" name="e-mail" />
+                    <input type="email" name="email" onChange={changeHandler} value={values.email}/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="pass">Password</label>
-                    <input type="password" id="pass" name="pass" />
+                    <input type="password"  name="password" onChange={changeHandler} value={values.password}/>
                 </div>
                 <button type="submit">Login</button>
                 <p className="field">

@@ -54,8 +54,13 @@ function App() {
         navigate(`/blogs/${values._id}`);
     }
 
+    const onLoginSubmit =  async (data) => {
+        console.log(data);
+    } 
+
     const contextValue = {
         onBlogDelete,
+        onLoginSubmit,
     }
 
     return (
