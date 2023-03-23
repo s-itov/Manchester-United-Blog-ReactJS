@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { BlogContext } from './contexts/blogContext';
 
 import * as blogService from './services/blogService';
+import * as authService from './services/authService';
 
 import { Authors } from "./components/Authors/Authors";
 import { Blogs } from "./components/Blogs/Blogs";
@@ -14,10 +15,12 @@ import { Login } from "./components/Login/Login";
 import { Register } from "./components/Register/Register";
 import { Details } from './components/Details/Details';
 import { Edit } from './components/Edit/Edit';
+import { Logout } from './components/Logout/Logout';
 
 function App() {
     const navigate = useNavigate();
     const [blogs, setBlogs] = useState([]);
+    const [auth, setAuth] = useState({});
 
     useEffect(() => {
         blogService.getAll()
@@ -54,13 +57,52 @@ function App() {
         navigate(`/blogs/${values._id}`);
     }
 
-    const onLoginSubmit =  async (data) => {
-        console.log(data);
-    } 
+    const onLoginSubmit = async (data) => {
+        try {
+            const result = await authService.login(data);
+            setAuth(result);
+            navigate('/blogs');
+
+        } catch (error) {
+            alert(error.message);
+        }
+    }
+
+    const onRegisterSubmit = async (values) => {
+        const { confirmPassword, ...registerData} = values;
+        if (confirmPassword !== values.password) {
+            alert('The passwords dont match!');
+            return;
+        }
+
+        try {
+            const result = await authService.register(registerData);
+            setAuth(result);
+            navigate('/blogs');
+
+        } catch (error) {
+            alert(error.message);
+        }
+    }
+
+    const onLogout = () => {
+
+        console.log(setAuth({}));
+        setAuth({});
+        console.log(setAuth({}));
+
+    }
 
     const contextValue = {
         onBlogDelete,
         onLoginSubmit,
+        onRegisterSubmit,
+        onLogout,
+        userId: auth._id,
+        userName: auth.username,
+        userEmail: auth.email,
+        token: auth.accessToken,
+        isAuthenticated: !!auth.accessToken,
     }
 
     return (
@@ -70,6 +112,7 @@ function App() {
                 <main>
                     <Routes>
                         <Route path='/' element={<Home />} />
+                        <Route path='/logout' element={<Logout />} />
                         <Route path='/blogs' element={<Blogs blogs={blogs} />} />
                         <Route path='/create' element={<Create onCreateBlogSubmit={onCreateBlogSubmit} />} />
                         <Route path='/authors' element={<Authors />} />

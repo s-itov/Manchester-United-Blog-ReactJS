@@ -41,7 +41,9 @@ header {
   
   nav li {
     list-style: none;
-    
+    color: white;
+    font-size: 18px;
+  
   }
   
   nav li a {
@@ -50,7 +52,7 @@ header {
     font-size: 18px;
     padding: 12px 14px;
   }
-  
+
   
   nav li a:hover {
     background-color: rgba(256, 256, 256, .9);
