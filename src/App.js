@@ -16,6 +16,7 @@ import { Register } from "./components/Register/Register";
 import { Details } from './components/Details/Details';
 import { Edit } from './components/Edit/Edit';
 import { Logout } from './components/Logout/Logout';
+import { NotFound } from './components/NotFound/NotFound';
 
 function App() {
     const navigate = useNavigate();
@@ -108,6 +109,7 @@ function App() {
                 <Header />
                 <main>
                     <Routes>
+                        <Route path='*' element={<NotFound />} />
                         <Route path='/' element={<Home />} />
                         <Route path='/logout' element={<Logout />} />
                         <Route path='/blogs' element={<Blogs blogs={blogs} />} />
