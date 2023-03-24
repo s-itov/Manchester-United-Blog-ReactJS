@@ -6,28 +6,34 @@ export const BlogItem = ({
     _id,
     imageUrl,
     title,
-    category,
     description,
-}) =>{
+}) => {
 
-    const { onBlogDelete } = useContext(BlogContext);
+    const { onBlogDelete, isAuthenticated, userName } = useContext(BlogContext);
 
-    return(
+    return (
         <div className="projcard projcard-red">
-        <div className="projcard-innerbox">
-            <img className="projcard-img" src={imageUrl} alt="article"/>
-            <div className="projcard-textbox">
-                <div className="projcard-title">{title}</div>
-                <div className="projcard-author">Category: {category}</div>
-                <div className="projcard-bar"></div>
-                <div className="projcard-description">{description}</div>
-                <div className="projcard-tagbox">
-                    <Link to={`/blogs/${_id}`} className="projcard-button">READ MORE</Link>
-                    <Link to={`/blogs/${_id}/edit`} className="projcard-button">EDIT</Link>
-                    <button onClick={() => onBlogDelete(_id)} className="projcard-button">DELETE</button>
+            <div className="projcard-innerbox">
+                <Link to={`/blogs/${_id}`} className="projcard-link">
+                    <img className="projcard-img" src={imageUrl} alt="article" />
+                </Link>
+                <div className="projcard-textbox">
+                    <Link to={`/blogs/${_id}`} className="projcard-link">
+                        <div className="projcard-title">{title}</div>
+                    </Link>
+                    <div className="projcard-author">Created By: {userName}</div>
+                    <div className="projcard-bar"></div>
+                    <div className="projcard-description">{description}</div>
+                    <div className="projcard-tagbox">
+                        <Link to={`/blogs/${_id}`} className="projcard-button">READ MORE</Link>
+                        {isAuthenticated && (<>
+                        <Link to={`/blogs/${_id}/edit`} className="projcard-button">EDIT</Link>
+                        <button onClick={() => onBlogDelete(_id)} className="projcard-button">DELETE</button>
+                        </>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     );
 }

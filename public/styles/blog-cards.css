@@ -17,6 +17,15 @@
 	box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
 }
 
+.projcard-link {
+	color: black;
+	text-decoration: none;
+}
+
+.projcard-link:hover {
+	color: #E71D36;
+}
+
 .projcard-container h1{
   text-align: center;
   margin-top: 8px;
