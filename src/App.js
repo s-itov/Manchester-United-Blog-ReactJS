@@ -86,11 +86,7 @@ function App() {
     }
 
     const onLogout = () => {
-
-        console.log(setAuth({}));
         setAuth({});
-        console.log(setAuth({}));
-
     }
 
     const contextValue = {
@@ -98,6 +94,7 @@ function App() {
         onLoginSubmit,
         onRegisterSubmit,
         onLogout,
+        onCreateBlogSubmit,
         userId: auth._id,
         userName: auth.username,
         userEmail: auth.email,
