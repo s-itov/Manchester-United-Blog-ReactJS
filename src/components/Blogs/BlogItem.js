@@ -3,13 +3,16 @@ import { useContext } from "react";
 import { BlogContext } from "../../contexts/blogContext";
 
 export const BlogItem = ({
+    _ownerId,
     _id,
     imageUrl,
     title,
     description,
 }) => {
 
-    const { onBlogDelete, isAuthenticated, userName } = useContext(BlogContext);
+    const { onBlogDelete, userName, userId } = useContext(BlogContext);
+
+    const isOwner = _ownerId === userId;
 
     return (
         <div className="projcard projcard-red">
@@ -26,7 +29,7 @@ export const BlogItem = ({
                     <div className="projcard-description">{description}</div>
                     <div className="projcard-tagbox">
                         <Link to={`/blogs/${_id}`} className="projcard-button">READ MORE</Link>
-                        {isAuthenticated && (<>
+                        {isOwner && (<>
                         <Link to={`/blogs/${_id}/edit`} className="projcard-button">EDIT</Link>
                         <button onClick={() => onBlogDelete(_id)} className="projcard-button">DELETE</button>
                         </>

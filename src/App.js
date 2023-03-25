@@ -32,7 +32,7 @@ function App() {
     }, []);
 
     const onCreateBlogSubmit = async (data) => {
-        const newBlog = await blogService.create(data);
+        const newBlog = await blogService.create(data, auth.accessToken);
 
         setBlogs(state => [...state, newBlog]);
 
@@ -43,7 +43,7 @@ function App() {
         const confirmed = window.confirm("Are you sure you want to delete this blog post?");
 
         if (confirmed) {
-            await blogService.remove(id);
+            await blogService.remove(id, auth.accessToken);
 
             setBlogs(state => state.filter(x => x._id !== id));
         }
@@ -51,7 +51,7 @@ function App() {
 
 
     const onEditBlogSubmit = async (values) => {
-        const result = await blogService.update(values._id, values);
+        const result = await blogService.update(values._id, values, auth.accessToken);
 
         setBlogs(state => state.map(x => x._id === values._id ? result : x));
 
@@ -62,7 +62,7 @@ function App() {
         try {
             const result = await authService.login(data);
             setAuth(result);
-            navigate('/blogs');
+            navigate('/');
 
         } catch (error) {
             alert(error.message);
@@ -86,7 +86,10 @@ function App() {
         }
     }
 
-    const onLogout = () => {
+    const onLogout = async () => {
+      
+        await authService.logout(auth.accessToken);
+
         setAuth({});
     }
 
@@ -97,7 +100,7 @@ function App() {
         onLogout,
         onCreateBlogSubmit,
         userId: auth._id,
-        userName: auth.username,
+        userName: auth.userName,
         userEmail: auth.email,
         token: auth.accessToken,
         isAuthenticated: !!auth.accessToken,
@@ -110,10 +113,10 @@ function App() {
                 <main>
                     <Routes>
                         <Route path='*' element={<NotFound />} />
-                        <Route path='/' element={<Home />} />
+                        <Route path='/' element={<Home blogs={blogs} />} />
                         <Route path='/logout' element={<Logout />} />
                         <Route path='/blogs' element={<Blogs blogs={blogs} />} />
-                        <Route path='/create' element={<Create onCreateBlogSubmit={onCreateBlogSubmit} />} />
+                        <Route path='/create' element={<Create />} />
                         <Route path='/authors' element={<Authors />} />
                         <Route path='/login' element={<Login />} />
                         <Route path='/register' element={<Register />} />

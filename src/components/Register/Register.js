@@ -8,7 +8,7 @@ export const Register = () => {
     const { onRegisterSubmit } = useContext(BlogContext);
 
     const { values, changeHandler, onSubmit } = useForm({
-        username: '',
+        userName: '',
         email: '',
         password: '',
         confirmPassword: '',
@@ -26,9 +26,9 @@ export const Register = () => {
                     <input
                         type="text"
                         id="username"
-                        name="username"
+                        name="userName"
                         onChange={changeHandler}
-                        value={values.username}
+                        value={values.userName}
                     />
                 </div>
                 <div className="form-group">

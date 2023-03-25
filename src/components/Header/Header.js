@@ -1,11 +1,11 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink  } from 'react-router-dom';
 
 import { BlogContext } from '../../contexts/blogContext';
 
 export const Header = () => {
 
-    const { isAuthenticated, userName} = useContext(BlogContext);
+    const { isAuthenticated, userName } = useContext(BlogContext);
 
     return (
         <header>
@@ -15,21 +15,23 @@ export const Header = () => {
             </div>
             <nav>
                 <ul>
-                    <li className="guest"><Link to="/blogs">BLOGS</Link></li>
-                    <li className="guest"><Link to="/authors">AUTHORS</Link></li>
-                    {isAuthenticated && (
+                    {isAuthenticated ? (
                         <>
-                            <li className="user"><Link to="/create">CREATE BLOG</Link></li>
-                            <li className="user"><Link to="/logout">LOGOUT</Link></li>
-                            <li className='user'><Link to="/"><i className="fa-solid fa-user"></i> {userName}</Link></li>
+                            <li className="guest"><NavLink  to="/blogs" activeClassName="active">BLOGS</NavLink></li>
+                            <li className="guest"><NavLink  to="/create" activeClassName="active"> CREATE BLOG</NavLink></li>
+                            <li className="guest"><NavLink  to="/authors" activeClassName="active">AUTHORS</NavLink></li>
+                            <li className="user"><NavLink  to="/logout" activeClassName="active">LOGOUT</NavLink></li>
+                            <li className='user'><NavLink  to="/" ><i className="fa-solid fa-user"></i> {userName}</NavLink></li> 
                         </>
-                    )}
-                    {!isAuthenticated && (
-                        <>
-                            <li className="guest"><Link to="/login">LOGIN</Link></li>
-                            <li className="guest"><Link to="/register">REGISTER</Link></li>
-                        </>
-                    )}
+                    ) :
+                        (
+                            <>
+                                <li className="guest"><NavLink  to="/blogs" activeClassName="active">BLOGS</NavLink></li>
+                                <li className="guest"><NavLink  to="/authors" activeClassName="active">AUTHORS</NavLink></li>
+                                <li className="guest"><NavLink  to="/login" activeClassName="active">LOGIN</NavLink></li>
+                                <li className="guest"><NavLink  to="/register" activeClassName="active">REGISTER</NavLink></li>
+                            </>
+                        )}
 
                 </ul>
             </nav>

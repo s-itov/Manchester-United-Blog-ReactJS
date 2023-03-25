@@ -6,7 +6,7 @@ export const Blogs = ({
 
     return (
         <section className="projcard-container">
-            <h1>Latest Blogs:</h1>
+            <h1>All Blogs:</h1>
             {blogs.map(x=> <BlogItem key={x._id} {...x} />).reverse()}
 
             {blogs.length === 0 && 

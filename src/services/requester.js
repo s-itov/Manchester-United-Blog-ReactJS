@@ -1,19 +1,28 @@
-const request = async (method, url, data) => {
+const request = async (method, url, data, token) => {
 
+  
     const options = {};
 
+    
     if (method !== 'GET') {
         options.method = method;
-
-        if(data) {
-            options.headers = {
-                'content-type' : 'application/json',
-            };
-
-            options.body = JSON.stringify(data);
-        }
     }
 
+    if(data) {
+        options.headers = {
+            'content-type' : 'application/json',
+        };
+
+        options.body = JSON.stringify(data);
+    }
+
+    if (token) {
+        options.headers = {
+            ...options.headers,
+            'X-Authorization': token,
+        };
+    }
+    
     const response = await fetch(url, options);
 
     if (response.status === 204) {
