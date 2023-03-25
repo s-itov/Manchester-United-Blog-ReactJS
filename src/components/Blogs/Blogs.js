@@ -1,8 +1,10 @@
 import { BlogItem } from "./BlogItem"
+import { useContext } from "react";
+import { BlogContext } from "../../contexts/blogContext";
 
-export const Blogs = ({
-    blogs,
-}) => {
+export const Blogs = () => {
+
+    const { blogs } = useContext(BlogContext);
 
     return (
         <section className="projcard-container">

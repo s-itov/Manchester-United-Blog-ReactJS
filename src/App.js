@@ -70,7 +70,7 @@ function App() {
     }
 
     const onRegisterSubmit = async (values) => {
-        const { confirmPassword, ...registerData} = values;
+        const { confirmPassword, ...registerData } = values;
         if (confirmPassword !== values.password) {
             alert('The passwords dont match!');
             return;
@@ -87,18 +87,20 @@ function App() {
     }
 
     const onLogout = async () => {
-      
+
         await authService.logout(auth.accessToken);
 
         setAuth({});
     }
 
     const contextValue = {
+        onCreateBlogSubmit,
         onBlogDelete,
+        onEditBlogSubmit,
         onLoginSubmit,
         onRegisterSubmit,
         onLogout,
-        onCreateBlogSubmit,
+        blogs,
         userId: auth._id,
         userName: auth.userName,
         userEmail: auth.email,
@@ -112,22 +114,21 @@ function App() {
                 <Header />
                 <main>
                     <Routes>
-                        <Route path='*' element={<NotFound />} />
-                        <Route path='/' element={<Home blogs={blogs} />} />
-                        <Route path='/logout' element={<Logout />} />
-                        <Route path='/blogs' element={<Blogs blogs={blogs} />} />
-                        <Route path='/create' element={<Create />} />
-                        <Route path='/authors' element={<Authors />} />
-                        <Route path='/login' element={<Login />} />
-                        <Route path='/register' element={<Register />} />
-                        <Route path='/blogs/:blogId' element={<Details />} />
-                        <Route path='/blogs/:blogId/edit' element={<Edit onEditBlogSubmit={onEditBlogSubmit} />} />
+                        <Route path='*' element={<NotFound />}/>
+                        <Route path='/' element={<Home />}/>
+                        <Route path='/logout' element={<Logout />}/>
+                        <Route path='/blogs' element={<Blogs />}/>
+                        <Route path='/create' element={<Create />}/>
+                        <Route path='/authors' element={<Authors />}/>
+                        <Route path='/login' element={<Login />}/>
+                        <Route path='/register' element={<Register />}/>
+                        <Route path='/blogs/:blogId' element={<Details />}/>
+                        <Route path='/blogs/:blogId/edit' element={<Edit />}/>
                     </Routes>
                 </main>
                 <Footer />
             </div>
         </BlogContext.Provider>
-
     );
 }
 

@@ -4,12 +4,9 @@ import { useContext } from 'react';
 import { BlogContext } from '../../contexts/blogContext';
 
 
-export const Home = ({
-    blogs,
-}
-) => {
+export const Home = () => {
 
-    const { isAuthenticated, userName } = useContext(BlogContext);
+    const { blogs, isAuthenticated, userName } = useContext(BlogContext);
 
     return (
         <>
