@@ -1323,11 +1323,17 @@
             "35c62d76-8152-4626-8712-eeb96381bea8": {
                 userName: "Peter",
                 email: "peter@abv.bg",
+                avatarUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFc6nu-hZXjFxRxKYo-suaU4HgLKnhpRBLYA&usqp=CAU",
+                country: "England",
+                about: "Peter James Crouch (born 30 January 1981). English former professional footballer who played as a striker. Fan of United since 10",
                 hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
             },
             "847ec027-f659-4086-8032-5173e2f9c93a": {
                 userName: "John",
                 email: "john@abv.bg",
+                avatarUrl: "https://www.usanetwork.com/sites/usablog/files/styles/blog-post-embedded--mobile/public/2023/02/how-to-watch-john-wick.jpg",
+                country: "England",
+                about: "I am considered one of the greatest fans of Manchester United ever lived.",
                 hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
             }
         },

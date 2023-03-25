@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import { BlogContext } from '../../contexts/blogContext';
+
 import * as blogService from '../../services/blogService';
+import { useForm } from '../../hooks/useForm';
  
 
 export const Edit = () => {
@@ -11,29 +13,18 @@ export const Edit = () => {
 
     const { blogId } = useParams();
 
-    const [values, setValues] = useState({
-        _id: '',
+    const { values, changeHandler, onSubmit, changeValues } = useForm({
         imageUrl: '',
         title: '',
         category: '',
         description: '',
         text: '',
-    });
-
-    const onChangeHandler = (e) => {
-        setValues(state => ({...state, [e.target.name]: e.target.value}));
-    }
-
-    const onSubmit = (e) => {
-        e.preventDefault();
-
-        onEditBlogSubmit(values);
-    }
+    }, onEditBlogSubmit)
 
     useEffect(()=>{
         blogService.getOne(blogId)
             .then(result => {
-                setValues(result);
+                changeValues(result);
             });
     },[blogId])
 
@@ -44,27 +35,27 @@ export const Edit = () => {
         <form onSubmit={onSubmit}> 
             <div className="form-group">
                 <label htmlFor="imageUrl">Image URL:</label>
-                <input value={values.imageUrl} onChange={onChangeHandler} type="text" id="imageUrl" name="imageUrl" />
+                <input value={values.imageUrl} onChange={changeHandler} type="text" id="imageUrl" name="imageUrl" />
             </div>
 
             <div className="form-group">
                 <label htmlFor="title">Title:</label>
-                <input value={values.title} onChange={onChangeHandler} type="text" id="title" name="title" />
+                <input value={values.title} onChange={changeHandler} type="text" id="title" name="title" />
             </div>
 
             <div className="form-group">
                 <label htmlFor="category">Category:</label>
-                <input value={values.category} onChange={onChangeHandler} type="text" id="category" name="category" />
+                <input value={values.category} onChange={changeHandler} type="text" id="category" name="category" />
             </div>
 
             <div className="form-group">
                 <label htmlFor="description">Description:</label>
-                <input value={values.description} onChange={onChangeHandler} type="text" id="description" name="description" />
+                <input value={values.description} onChange={changeHandler} type="text" id="description" name="description" />
             </div>
 
             <div className="form-group">
                 <label htmlFor="text">Text:</label>
-                <textarea id="text" name="text" rows="30" value={values.text} onChange={onChangeHandler}></textarea>
+                <textarea id="text" name="text" rows="30" value={values.text} onChange={changeHandler}></textarea>
             </div>
             <button type="submit">Edit Post</button>
         </form>

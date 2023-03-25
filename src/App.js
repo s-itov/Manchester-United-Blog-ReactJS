@@ -5,7 +5,6 @@ import { BlogContext } from './contexts/blogContext';
 import * as blogService from './services/blogService';
 import * as authService from './services/authService';
 
-import { Authors } from "./components/Authors/Authors";
 import { Blogs } from "./components/Blogs/Blogs";
 import { Create } from "./components/Create/Create";
 import { Footer } from "./components/Footer/Footer";
@@ -17,16 +16,16 @@ import { Details } from './components/Details/Details';
 import { Edit } from './components/Edit/Edit';
 import { Logout } from './components/Logout/Logout';
 import { NotFound } from './components/NotFound/NotFound';
+import { useLocalStorage } from './hooks/useLocalStorage';
 
 function App() {
     const navigate = useNavigate();
     const [blogs, setBlogs] = useState([]);
-    const [auth, setAuth] = useState({});
+    const [auth, setAuth] = useLocalStorage('auth', {});
 
     useEffect(() => {
         blogService.getAll()
             .then(result => {
-                console.log(result);
                 setBlogs(result);
             })
     }, []);
@@ -43,7 +42,7 @@ function App() {
         const confirmed = window.confirm("Are you sure you want to delete this blog post?");
 
         if (confirmed) {
-            await blogService.remove(id, auth.accessToken);
+            await blogService.remove(id, auth.accessToken); //TODO: check if is deleted on server 
 
             setBlogs(state => state.filter(x => x._id !== id));
         }
@@ -119,7 +118,6 @@ function App() {
                         <Route path='/logout' element={<Logout />}/>
                         <Route path='/blogs' element={<Blogs />}/>
                         <Route path='/create' element={<Create />}/>
-                        <Route path='/authors' element={<Authors />}/>
                         <Route path='/login' element={<Login />}/>
                         <Route path='/register' element={<Register />}/>
                         <Route path='/blogs/:blogId' element={<Details />}/>

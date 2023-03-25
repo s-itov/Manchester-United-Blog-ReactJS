@@ -6,14 +6,14 @@ const request = async (method, url, data, token) => {
     
     if (method !== 'GET') {
         options.method = method;
-    }
 
-    if(data) {
-        options.headers = {
-            'content-type' : 'application/json',
-        };
+        if(data) {
+            options.headers = {
+                'content-type' : 'application/json',
+            };
 
-        options.body = JSON.stringify(data);
+            options.body = JSON.stringify(data);
+        }
     }
 
     if (token) {

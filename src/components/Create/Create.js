@@ -9,6 +9,7 @@ export const Create = () => {
     const { values, changeHandler, onSubmit } = useForm({
         imageUrl: '',
         title: '',
+        category: '',
         description: '',
         text: '',
     }, onCreateBlogSubmit)
@@ -37,6 +38,11 @@ export const Create = () => {
                         id="title"
                         name="title"
                     />
+                </div>
+
+                <div className="form-group">
+                    <label htmlFor="category">Category:</label>
+                    <input value={values.category} onChange={changeHandler} type="text" id="category" name="category" />
                 </div>
 
                 <div className="form-group">

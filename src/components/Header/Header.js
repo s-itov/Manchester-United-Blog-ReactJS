@@ -19,7 +19,6 @@ export const Header = () => {
                         <>
                             <li className="guest"><NavLink  to="/blogs" activeClassName="active">BLOGS</NavLink></li>
                             <li className="guest"><NavLink  to="/create" activeClassName="active"> CREATE BLOG</NavLink></li>
-                            <li className="guest"><NavLink  to="/authors" activeClassName="active">AUTHORS</NavLink></li>
                             <li className="user"><NavLink  to="/logout" activeClassName="active">LOGOUT</NavLink></li>
                             <li className='user'><NavLink  to="/" ><i className="fa-solid fa-user"></i> {userName}</NavLink></li> 
                         </>
@@ -27,7 +26,6 @@ export const Header = () => {
                         (
                             <>
                                 <li className="guest"><NavLink  to="/blogs" activeClassName="active">BLOGS</NavLink></li>
-                                <li className="guest"><NavLink  to="/authors" activeClassName="active">AUTHORS</NavLink></li>
                                 <li className="guest"><NavLink  to="/login" activeClassName="active">LOGIN</NavLink></li>
                                 <li className="guest"><NavLink  to="/register" activeClassName="active">REGISTER</NavLink></li>
                             </>
