@@ -42,7 +42,7 @@ function App() {
         const confirmed = window.confirm("Are you sure you want to delete this blog post?");
 
         if (confirmed) {
-            await blogService.remove(id, auth.accessToken); //TODO: check if is deleted on server 
+            await blogService.remove(id, auth.accessToken); 
 
             setBlogs(state => state.filter(x => x._id !== id));
         }
