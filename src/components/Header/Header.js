@@ -17,17 +17,17 @@ export const Header = () => {
                 <ul>
                     {isAuthenticated ? (
                         <>
-                            <li className="guest"><NavLink  to="/blogs" activeClassName="active">BLOGS</NavLink></li>
-                            <li className="guest"><NavLink  to="/create" activeClassName="active"> CREATE BLOG</NavLink></li>
-                            <li className="user"><NavLink  to="/logout" activeClassName="active">LOGOUT</NavLink></li>
+                            <li className="guest"><NavLink  to="/blogs" activeclassname="active">BLOGS</NavLink></li>
+                            <li className="guest"><NavLink  to="/create" activeclassname="active"> CREATE BLOG</NavLink></li>
+                            <li className="user"><NavLink  to="/logout" activeclassname="active">LOGOUT</NavLink></li>
                             <li className='user'><NavLink  to="/" ><i className="fa-solid fa-user"></i> {userName}</NavLink></li> 
                         </>
                     ) :
                         (
                             <>
-                                <li className="guest"><NavLink  to="/blogs" activeClassName="active">BLOGS</NavLink></li>
-                                <li className="guest"><NavLink  to="/login" activeClassName="active">LOGIN</NavLink></li>
-                                <li className="guest"><NavLink  to="/register" activeClassName="active">REGISTER</NavLink></li>
+                                <li className="guest"><NavLink  to="/blogs" activeclassname="active">BLOGS</NavLink></li>
+                                <li className="guest"><NavLink  to="/login" activeclassname="active">LOGIN</NavLink></li>
+                                <li className="guest"><NavLink  to="/register" activeclassname="active">REGISTER</NavLink></li>
                             </>
                         )}
 

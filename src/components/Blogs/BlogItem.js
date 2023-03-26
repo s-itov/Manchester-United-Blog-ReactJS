@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { BlogContext } from "../../contexts/blogContext";
+import * as blogService from "../../services/blogService";
 
 export const BlogItem = ({
     _ownerId,
@@ -10,10 +11,18 @@ export const BlogItem = ({
     description,
 }) => {
 
-    const { onBlogDelete, userName, userId } = useContext(BlogContext);
-
-    const isOwner = _ownerId === userId;
-
+    const { onBlogDelete, userId } = useContext(BlogContext);
+    const [owner, setOwner] = useState({ name: "Loading..." }); // default value while loading
+    
+    useEffect(() => {
+        blogService.getOwner(_id)
+        .then(result => {
+            setOwner(result[0].author);
+            console.log(result[0].author);
+        })
+    }, [_id]);
+    
+    const isOwner = owner._id === userId;
     return (
         <div className="projcard projcard-red">
             <div className="projcard-innerbox">
@@ -24,7 +33,7 @@ export const BlogItem = ({
                     <Link to={`/blogs/${_id}`} className="projcard-link">
                         <div className="projcard-title">{title}</div>
                     </Link>
-                    <div className="projcard-author">Created By: {userName}</div>
+                    <div className="projcard-author">Created By: {owner.userName}</div>
                     <div className="projcard-bar"></div>
                     <div className="projcard-description">{description}</div>
                     <div className="projcard-tagbox">
