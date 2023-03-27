@@ -8,3 +8,5 @@ export const register = (data) =>  request.post(`${baseUrl}/register`, data);
 
 export const logout = (token) => request.get(`${baseUrl}/logout`, null, token); 
 
+export const getAuthorDetails = async (token) => request.get(`${baseUrl}/me`, null, token);
+

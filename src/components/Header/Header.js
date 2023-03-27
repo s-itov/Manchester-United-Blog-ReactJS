@@ -5,7 +5,7 @@ import { BlogContext } from '../../contexts/blogContext';
 
 export const Header = () => {
 
-    const { isAuthenticated, userName } = useContext(BlogContext);
+    const { isAuthenticated, userId, userName } = useContext(BlogContext);
 
     return (
         <header>
@@ -20,7 +20,7 @@ export const Header = () => {
                             <li className="guest"><NavLink  to="/blogs" activeclassname="active">BLOGS</NavLink></li>
                             <li className="guest"><NavLink  to="/create" activeclassname="active"> CREATE BLOG</NavLink></li>
                             <li className="user"><NavLink  to="/logout" activeclassname="active">LOGOUT</NavLink></li>
-                            <li className='user'><NavLink  to="/" ><i className="fa-solid fa-user"></i> {userName}</NavLink></li> 
+                            <li className='user'><NavLink  to={`/author`} ><i className="fa-solid fa-user"></i> {userName}</NavLink></li> 
                         </>
                     ) :
                         (

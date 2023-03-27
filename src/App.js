@@ -17,6 +17,7 @@ import { Edit } from './components/Edit/Edit';
 import { Logout } from './components/Logout/Logout';
 import { NotFound } from './components/NotFound/NotFound';
 import { useLocalStorage } from './hooks/useLocalStorage';
+import { Author } from './components/Author/Author';
 
 function App() {
     const navigate = useNavigate();
@@ -122,6 +123,7 @@ function App() {
                         <Route path='/register' element={<Register />}/>
                         <Route path='/blogs/:blogId' element={<Details />}/>
                         <Route path='/blogs/:blogId/edit' element={<Edit />}/>
+                        <Route path='/author' element={<Author /> }/>
                     </Routes>
                 </main>
                 <Footer />

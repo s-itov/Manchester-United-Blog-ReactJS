@@ -17,6 +17,19 @@
 	box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
 }
 
+.projcard-author {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.projcard-author img{
+	width: 40px;
+	height: 40px;
+	object-fit: cover;
+	border-radius: 50%;
+}
+
 .projcard-link {
 	color: black;
 	text-decoration: none;
