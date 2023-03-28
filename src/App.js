@@ -123,7 +123,7 @@ function App() {
                         <Route path='/register' element={<Register />}/>
                         <Route path='/blogs/:blogId' element={<Details />}/>
                         <Route path='/blogs/:blogId/edit' element={<Edit />}/>
-                        <Route path='/author' element={<Author /> }/>
+                        <Route path='/author' element={<Author />}/>
                     </Routes>
                 </main>
                 <Footer />

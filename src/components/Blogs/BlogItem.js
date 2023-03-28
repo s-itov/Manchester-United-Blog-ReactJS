@@ -1,25 +1,30 @@
 import { Link } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
+import {  formatDate } from "../../utils/dateUtils";
 import { BlogContext } from "../../contexts/blogContext";
 import * as blogService from "../../services/blogService";
 
 export const BlogItem = ({
     _ownerId,
     _id,
+    _createdOn,
     imageUrl,
     title,
     description,
 }) => {
 
+    console.log(_createdOn);
+
     const { onBlogDelete, userId } = useContext(BlogContext);
     const [owner, setOwner] = useState({ userName: "Loading..." })
+
     useEffect(() => {
         blogService.getOwner(_id)
-        .then(result => {
-            setOwner(result[0].author);
-        })
+            .then(result => {
+                setOwner(result[0].author);
+            })
     }, [_id]);
-    
+
     const isOwner = _ownerId === userId;
     return (
         <div className="projcard projcard-red">
@@ -32,7 +37,11 @@ export const BlogItem = ({
                         <div className="projcard-title">{title}</div>
                     </Link>
                     <div className="projcard-author">
-                        Created By: <img src={owner.avatarUrl} alt="owner" /> {owner.userName} </div>
+                        <p>Created By:</p>
+                        <img src={owner.avatarUrl} alt="owner" />
+                        <p>{owner.userName}</p>
+                        <p>on {formatDate(_createdOn)}</p>
+                    </div>
                     <div className="projcard-bar"></div>
                     <div className="projcard-description">{description}</div>
                     <div className="projcard-tagbox">
