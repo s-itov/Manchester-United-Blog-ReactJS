@@ -7,12 +7,12 @@ export const Details = () => {
 
     const [blog, setBlog] = useState({});
 
-    useEffect(()=>{
+    useEffect(() => {
         blogService.getOne(blogId)
             .then(result => {
                 setBlog(result);
             });
-    },[blogId])
+    }, [blogId])
 
     return (
         <section className="blog-post">
@@ -22,8 +22,25 @@ export const Details = () => {
             <div className="blog-post-text">
                 <p>{blog.text}</p>
             </div>
-            <div className="blog-post-category">
-                <p>Likes: {blog.likes} </p>
+            <div className="blog-post-likes">100 likes</div>
+            <div className="blog-post-comment-section">
+                <h3>Comments</h3>
+                <ul className="blog-post-comment-list">
+                    <li className="blog-post-comment">Username: Comment text</li>
+                    <li className="blog-post-comment">Username: Comment text</li>
+                    <li className="blog-post-comment">Username: Comment text</li>
+                </ul>
+            </div>
+            <div className="blog-post-actions">
+                <button className="like-btn">Like</button>
+                <button className="add-comment-btn">Add Comment</button>
+            </div>
+            <div className="blog-postadd-comment">
+                <form>
+                    <label for="comment">Add a Comment:</label>
+                    <textarea id="comment" name="comment"></textarea>
+                    <button type="submit">Submit</button>
+                </form>
             </div>
         </section>
     );

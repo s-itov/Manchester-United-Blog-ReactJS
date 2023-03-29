@@ -11,16 +11,16 @@ export const BlogItem = ({
     imageUrl,
     title,
     description,
-    likes,
 }) => {
 
     const { onBlogDelete, userId, isAuthenticated } = useContext(BlogContext);
-    const [owner, setOwner] = useState({ userName: "Loading..." })
+    const [author, setAuthor] = useState({ userName: "Loading..." })
 
     useEffect(() => {
-        blogService.getOwner(_id)
+        blogService.getAuthor(_id)
             .then(result => {
-                setOwner(result[0].author);
+                console.log(result);
+                setAuthor(result[0].author);
             })
     }, [_id]);
 
@@ -35,8 +35,8 @@ export const BlogItem = ({
                     <Link to={`/blogs/${_id}`} className="projcard-link"><div className="projcard-title">{title}</div></Link>
                     <div className="projcard-author">
                         <p>Created By:</p>
-                        <img src={owner.avatarUrl} alt="owner" />
-                        <p>{owner.userName}</p>
+                        <img src={author.avatarUrl} alt="owner" />
+                        <p>{author.userName}</p>
                         <p>on {formatDate(_createdOn)}</p>
                     </div>
                     <div className="projcard-bar"></div>

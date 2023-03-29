@@ -34,14 +34,13 @@ export const update = async (blogId, blogData, token) => {
     return result;
 }
 
-export const getOwner = async (blogId) => {
+export const getAuthor = async (blogId) => {
       const searchQuery = encodeURIComponent(`_id="${blogId}"`);
       const relationQuery = encodeURIComponent(`author=_ownerId:users`);
       const url = `${baseUrl}?where=${searchQuery}&load=${relationQuery}`;
 
       const response = await request.get(url);
-      const blogs = Object.values(response);
+      const author = Object.values(response);
 
-      return blogs;
-
-  };
+      return author;
+};
