@@ -23,7 +23,7 @@ export const Details = () => {
                 <p>{blog.text}</p>
             </div>
             <div className="blog-post-category">
-                <p>Category: {blog.category} </p>
+                <p>Likes: {blog.likes} </p>
             </div>
         </section>
     );

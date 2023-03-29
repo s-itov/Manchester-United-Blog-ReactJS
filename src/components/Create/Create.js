@@ -12,6 +12,7 @@ export const Create = () => {
         category: '',
         description: '',
         text: '',
+        likes: Number(0),
     }, onCreateBlogSubmit)
 
     return (
