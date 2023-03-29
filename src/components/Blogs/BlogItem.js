@@ -25,7 +25,6 @@ export const BlogItem = ({
     }, [_id]);
 
     const isOwner = _ownerId === userId;
-    const canLikeAndComment = !isOwner && isAuthenticated;
 
     return (
         <div className="projcard projcard-red">
@@ -49,10 +48,6 @@ export const BlogItem = ({
                             <Link to={`/blogs/${_id}/edit`} className="projcard-button">EDIT</Link>
                             <button onClick={() => onBlogDelete(_id)} className="projcard-button">DELETE</button>
                         </>)}
-
-                        {canLikeAndComment && 
-                            <button className="projcard-button"><i class="fa-regular fa-heart"></i></button>
-                        }
                     </div>
                 </div>
             </div>
