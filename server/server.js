@@ -1373,10 +1373,6 @@
         comments: {
 
         },
-        likes: {
-
-        },
-
     };
     var rules$1 = {
         users: {

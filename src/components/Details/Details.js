@@ -1,31 +1,54 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useContext } from 'react';
+
 import { BlogContext } from '../../contexts/blogContext';
 import { formatDate } from "../../utils/dateUtils";
 import * as loading from "../../utils/defaultConstants"
 import * as blogService from '../../services/blogService';
+import * as commentService from '../../services/commentService';
+
+
+import { AddComment } from './AddComment/AddComment';
 
 export const Details = () => {
-    const { userId, isAuthenticated } = useContext(BlogContext);
-    const { blogId } = useParams();
 
+
+    const { blogId } = useParams();
+    const { userId, isAuthenticated, token } = useContext(BlogContext);
 
     const [blog, setBlog] = useState({});
     const [author, setAuthor] = useState({ userName: "Loading...", avatarUrl: null })
     const [isLoading, setIsLoading] = useState(true);
 
+    const onCommentSubmit = async (values) => {
+
+        const response = await commentService.create(blogId, values.comment, token);
+
+        setBlog(state => ({
+            ...state,
+            comments: [...state.comments, response],
+        }));
+    };
+
     useEffect(() => {
         Promise.all([
             blogService.getOne(blogId),
-            blogService.getAuthor(blogId)
+            commentService.getAll(blogId),
+            blogService.getAuthor(blogId),
         ])
-            .then(([blogResult, authorResult]) => {
-                setBlog(blogResult);
+            .then(([blogResult, comments, authorResult]) => {
+                setBlog({
+                    ...blogResult,
+                    comments,
+                });
                 setAuthor(authorResult[0].author);
                 setIsLoading(false);
             })
     }, [blogId]);
+
+
+
 
     const isOwner = blog._ownerId === userId;
     const canComment = !isOwner && isAuthenticated;
@@ -40,8 +63,8 @@ export const Details = () => {
                 <p>Created By:</p>
                 {isLoading ? (
                     <>
-                    <img src={loading.defaultAvatar} alt="owner" />
-                    <p>{author.userName}</p>
+                        <img src={loading.defaultAvatar} alt="owner" />
+                        <p>{author.userName}</p>
                     </>
                 ) : (
                     <>
@@ -55,26 +78,14 @@ export const Details = () => {
 
                 <h3>Comments:</h3>
                 <ul className="comments-list">
-                    <li className="comment">
-                        <span className="username">Jane Willy: </span>
-                        <span className="comment-text"> Great post! I really enjoyed reading it.</span>
-                    </li>
-                    <li className="comment">
-                        <span className="username">Jane Smith: </span>
-                        <span className="comment-text"> Thanks for sharing your insights. I learned a lot.</span>
-                    </li>
+                    {blog.comments && blog.comments.map(x => (
+                        <li key={x._id} className="comment">
+                            <p>{x.author.userName}: {x.comment}</p>
+                        </li>
+                    ))}
                 </ul>
 
-                {canComment && (
-                    <div className="add-comment-section">
-                        <h3>Add Comment</h3>
-                        <form className="comment-form">
-                            <label htmlFor="comment-text">Comment:</label>
-                            <textarea id="comment-text" name="comment-text"></textarea>
-                            <button type="submit">Submit</button>
-                        </form>
-                    </div>
-                )}
+                {canComment && <AddComment onCommentSubmit={onCommentSubmit} />}
 
             </div>
         </section>
