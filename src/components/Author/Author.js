@@ -3,24 +3,27 @@ import { useContext } from "react";
 import { BlogContext } from "../../contexts/blogContext";
 import { BlogItem } from "../Blogs/BlogItem";
 import * as authService from "../../services/authService";
+import * as loading from "../../utils/defaultConstants";
 
 export const Author = () => {
 
     const { token, blogs} = useContext(BlogContext);
-
     const [user, setUser] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
+
    
     useEffect(() => {
         authService.getAuthorDetails(token)
         .then(result => {
             setUser(result);
+            setIsLoading(false);
         }); 
     }, [token]);
 
     return (
         <section className="author-info">
             <div className="author-card">
-                <img src={user.avatarUrl} alt="Author Avatar" className="avatar" />
+                {isLoading ? <img src={loading.defaultAvatar} alt="Author Avatar" className="avatar" /> : <img src={user.avatarUrl} alt="Author Avatar" className="avatar" />}
                     <h2 className="username">{user.userName}</h2>
                     <p className="country"><b>Country:</b> {user.country} </p>
                     <p className="email"><b>Email:</b> <a href={`mailto:${user.email}`}>{user.email}</a></p>

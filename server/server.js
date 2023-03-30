@@ -1332,7 +1332,7 @@
                 userName: "John",
                 email: "john@abv.bg",
                 avatarUrl: "https://www.usanetwork.com/sites/usablog/files/styles/blog-post-embedded--mobile/public/2023/02/how-to-watch-john-wick.jpg",
-                country: "England",
+                country: "USA",
                 about: "I am considered one of the greatest fans of Manchester United ever lived.",
                 hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
             }
@@ -1375,7 +1375,8 @@
         },
         likes: {
 
-        }
+        },
+
     };
     var rules$1 = {
         users: {

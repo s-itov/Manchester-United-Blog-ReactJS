@@ -77,9 +77,11 @@ function App() {
         }
 
         try {
+
             const result = await authService.register(registerData);
             setAuth(result);
             navigate('/blogs');
+
 
         } catch (error) {
             alert(error.message);
