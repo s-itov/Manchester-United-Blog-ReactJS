@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useContext } from 'react';
+import moment from 'moment/moment';
 
 import { BlogContext } from '../../contexts/blogContext';
 import { formatDate } from "../../utils/dateUtils";
@@ -88,6 +89,8 @@ export const Details = () => {
                                 <li key={x._id} className="comment">
                                     <span className="username">{x.userName}: </span>
                                     <span className="comment-text">{x.comment}</span>
+                                    <span className="comment-time">{moment(x._createdOn).fromNow()}</span>
+
                                 </li>
                             ))}
                         </ul>

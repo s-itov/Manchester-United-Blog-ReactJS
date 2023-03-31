@@ -78,6 +78,15 @@
 .comment {
   margin-bottom: 10px;
   font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.comment-time {
+  font-size: 12px;
+  font-style: italic;
 }
 
 .username {
@@ -89,6 +98,7 @@
 
 .comment-text {
   color: #333;
+  width: 100%;
 }
 
 .likes-section {

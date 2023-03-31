@@ -5,7 +5,7 @@ import { BlogContext } from '../../contexts/blogContext';
 
 export const Header = () => {
 
-    const { isAuthenticated, userId, userName } = useContext(BlogContext);
+    const { isAuthenticated, userName } = useContext(BlogContext);
 
     return (
         <header>
