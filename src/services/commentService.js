@@ -15,9 +15,9 @@ export const getAll = async (blogId) => {
 };
 
 
-export const create = async (blogId, comment, token) => {
+export const create = async (blogId, comment, userName, token) => {
 
-    const result = await request.post(baseUrl, { blogId, comment}, token);
+    const result = await request.post(baseUrl, { blogId, comment, userName}, token);
 
     return result;
 }

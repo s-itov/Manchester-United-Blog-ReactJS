@@ -21,33 +21,32 @@ export const Details = () => {
     const [author, setAuthor] = useState({ userName: "Loading...", avatarUrl: null })
     const [isLoading, setIsLoading] = useState(true);
 
-    const onCommentSubmit = async (values) => {
-
-        const response = await commentService.create(blogId, values.comment, token);
-
-        setBlog(state => ({
-            ...state,
-            comments: [...state.comments, response],
-        }));
-    };
-
+    
     useEffect(() => {
         Promise.all([
             blogService.getOne(blogId),
             commentService.getAll(blogId),
             blogService.getAuthor(blogId),
         ])
-            .then(([blogResult, comments, authorResult]) => {
-                setBlog({
-                    ...blogResult,
-                    comments,
-                });
-                setAuthor(authorResult[0].author);
-                setIsLoading(false);
-            })
+        .then(([blogResult, comments, authorResult]) => {
+            setBlog({
+                ...blogResult,
+                comments,
+            });
+            setAuthor(authorResult[0].author);
+            setIsLoading(false);
+        })
     }, [blogId]);
+    
+    
+    const onCommentSubmit = async (values) => {
+        const response = await commentService.create(blogId, values.comment, values.userName , token);
 
-
+        setBlog(state => ({
+            ...state,
+            comments: [...state.comments, response],
+        }));
+    };
 
 
     const isOwner = blog._ownerId === userId;
@@ -80,7 +79,9 @@ export const Details = () => {
                 <ul className="comments-list">
                     {blog.comments && blog.comments.map(x => (
                         <li key={x._id} className="comment">
-                            <p>{x.author.userName}: {x.comment}</p>
+                            {console.log(x)}
+                        <span className="username">{x.userName}: </span>
+                        <span className="comment-text">{x.comment}</span>
                         </li>
                     ))}
                 </ul>
