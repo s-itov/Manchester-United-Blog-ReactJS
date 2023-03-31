@@ -12,8 +12,19 @@
         width: 1100px;
     }
 
-    .home-page img {
-        height: 460px;
-        left: 800px;
+    .home-page h2 {
+      font-size: 40px;
+      margin-bottom: 20px;
     }
+    
+    .home-page p {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .home-page img {
+        height: 520px;
+        left: 760px;
+    }
+
 }

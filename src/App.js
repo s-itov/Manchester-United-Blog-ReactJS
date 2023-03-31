@@ -80,7 +80,7 @@ function App() {
 
             const result = await authService.register(registerData);
             setAuth(result);
-            navigate('/blogs');
+            navigate('/');
 
 
         } catch (error) {

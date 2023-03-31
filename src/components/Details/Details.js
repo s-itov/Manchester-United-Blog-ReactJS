@@ -18,29 +18,29 @@ export const Details = () => {
     const { userId, isAuthenticated, token } = useContext(BlogContext);
 
     const [blog, setBlog] = useState({});
-    const [author, setAuthor] = useState({ userName: "Loading...", avatarUrl: null })
+    const [author, setAuthor] = useState({ userName: "Loading..."})
     const [isLoading, setIsLoading] = useState(true);
 
-    
+
     useEffect(() => {
         Promise.all([
             blogService.getOne(blogId),
             commentService.getAll(blogId),
             blogService.getAuthor(blogId),
         ])
-        .then(([blogResult, comments, authorResult]) => {
-            setBlog({
-                ...blogResult,
-                comments,
-            });
-            setAuthor(authorResult[0].author);
-            setIsLoading(false);
-        })
+            .then(([blogResult, comments, authorResult]) => {
+                setBlog({
+                    ...blogResult,
+                    comments,
+                });
+                setAuthor(authorResult[0].author);
+                setIsLoading(false);
+            })
     }, [blogId]);
-    
-    
+
+
     const onCommentSubmit = async (values) => {
-        const response = await commentService.create(blogId, values.comment, values.userName , token);
+        const response = await commentService.create(blogId, values.comment, values.userName, token);
 
         setBlog(state => ({
             ...state,
@@ -58,33 +58,42 @@ export const Details = () => {
             <h2 className="post-title">{blog.title}</h2>
             <p className="post-description">{blog.description}</p>
             <p className="post-text">{blog.text}</p>
+
             <div className="blog-post-author">
                 <p>Created By:</p>
-                {isLoading ? (
-                    <>
-                        <img src={loading.defaultAvatar} alt="owner" />
-                        <p>{author.userName}</p>
-                    </>
-                ) : (
-                    <>
-                        <img src={author.avatarUrl} alt="owner" />
-                        <p>{author.userName}</p>
-                    </>
-                )}
-                <p>on {formatDate(blog._createdOn)}</p>
+                {isLoading ?
+                    (
+                        <>
+                            <img src={loading.defaultAvatar} alt="owner" />
+                            <p>{author.userName}</p>
+                        </>
+                    ) :
+                    (
+                        <>
+                            <img src={author.avatarUrl} alt="owner" />
+                            <p>{author.userName}</p>
+                            <p>on {formatDate(blog._createdOn)}</p>
+                        </>
+                    )}
             </div>
-            <div className="comments-section">
 
-                <h3>Comments:</h3>
-                <ul className="comments-list">
-                    {blog.comments && blog.comments.map(x => (
-                        <li key={x._id} className="comment">
-                            {console.log(x)}
-                        <span className="username">{x.userName}: </span>
-                        <span className="comment-text">{x.comment}</span>
-                        </li>
-                    ))}
-                </ul>
+            <div className="comments-section">
+                {blog.comments && blog.comments.length === 0  ?
+                    <h3>No comments yet on this blog post...</h3>
+                    :
+                    <>
+                        <h3>Comments:</h3>
+                        <ul className="comments-list">
+                            {blog.comments && blog.comments.map(x => (
+                                <li key={x._id} className="comment">
+                                    <span className="username">{x.userName}: </span>
+                                    <span className="comment-text">{x.comment}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </>
+                }
+
 
                 {canComment && <AddComment onCommentSubmit={onCommentSubmit} />}
 
