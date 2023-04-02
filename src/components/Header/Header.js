@@ -18,6 +18,7 @@ export const Header = () => {
                     {isAuthenticated ? (
                         <>
                             <li className="guest"><NavLink  to="/blogs" activeclassname="active">BLOGS</NavLink></li>
+                            <li className="guest"><NavLink  to="/creators" activeclassname="active">CREATORS</NavLink></li>
                             <li className="guest"><NavLink  to="/create" activeclassname="active"> CREATE BLOG</NavLink></li>
                             <li className="user"><NavLink  to="/logout" activeclassname="active">LOGOUT</NavLink></li>
                             <li className='user'><NavLink  to={`/author`} ><i className="fa-solid fa-user"></i> {userName}</NavLink></li> 
@@ -26,6 +27,7 @@ export const Header = () => {
                         (
                             <>
                                 <li className="guest"><NavLink  to="/blogs" activeclassname="active">BLOGS</NavLink></li>
+                                <li className="guest"><NavLink  to="/creators" activeclassname="active">CREATORS</NavLink></li>
                                 <li className="guest"><NavLink  to="/login" activeclassname="active">LOGIN</NavLink></li>
                                 <li className="guest"><NavLink  to="/register" activeclassname="active">REGISTER</NavLink></li>
                             </>

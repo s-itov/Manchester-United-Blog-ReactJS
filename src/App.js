@@ -4,6 +4,7 @@ import { BlogContext } from './contexts/blogContext';
 
 import * as blogService from './services/blogService';
 import * as authService from './services/authService';
+import * as creatorService from './services/creatorService';
 
 import { Blogs } from "./components/Blogs/Blogs";
 import { Create } from "./components/Create/Create";
@@ -18,16 +19,27 @@ import { Logout } from './components/Logout/Logout';
 import { NotFound } from './components/NotFound/NotFound';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { Author } from './components/Author/Author';
+import { Creators } from './components/Creators/Creators';
 
 function App() {
     const navigate = useNavigate();
     const [blogs, setBlogs] = useState([]);
+    const [creators, setCreators] = useState([]);
+
     const [auth, setAuth] = useLocalStorage('auth', {});
 
     useEffect(() => {
         blogService.getAll()
             .then(result => {
                 setBlogs(result);
+            })
+    }, []);
+
+
+    useEffect(() => {
+        creatorService.getAll()
+            .then(result => {
+                setCreators(result);
             })
     }, []);
 
@@ -79,7 +91,11 @@ function App() {
         try {
 
             const result = await authService.register(registerData);
+            await creatorService.create(registerData);
             setAuth(result);
+
+            setCreators(state => [...state, registerData]);
+
             navigate('/');
 
 
@@ -103,6 +119,7 @@ function App() {
         onRegisterSubmit,
         onLogout,
         blogs,
+        creators,
         userId: auth._id,
         userName: auth.userName,
         userEmail: auth.email,
@@ -126,6 +143,7 @@ function App() {
                         <Route path='/blogs/:blogId' element={<Details />}/>
                         <Route path='/blogs/:blogId/edit' element={<Edit />}/>
                         <Route path='/author' element={<Author />}/>
+                        <Route path='/creators' element={<Creators />}/>
                     </Routes>
                 </main>
                 <Footer />

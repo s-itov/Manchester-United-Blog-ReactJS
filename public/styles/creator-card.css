@@ -1,0 +1,39 @@
+.creator-cards {
+    margin: 100px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 100px;
+  }
+  
+  .creator-card {
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 18px;
+    text-align: center;
+  }
+  
+  .creator-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  .creator-username {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .creator-email,
+  .creator-country {
+    font-size: 1.2em;
+    margin-bottom: 12px;
+  }
+  
+  .creator-about {
+    font-size: 1.1em;
+    line-height: 1.4;
+  }
+  

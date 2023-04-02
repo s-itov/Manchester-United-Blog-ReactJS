@@ -3,8 +3,9 @@ import * as request from '../services/requester';
 const baseUrl = "http://localhost:3030/data/comments";
 
 export const getAll = async (blogId) => {
-    const query = encodeURIComponent(`blogId="${blogId}"`);
-    const url = `${baseUrl}?where=${query}`;
+    const searchQuery = encodeURIComponent(`blogId="${blogId}"`);
+    const relationQuery = encodeURIComponent(`author=_ownerId:users`);
+    const url = `${baseUrl}?where=${searchQuery}&load=${relationQuery}`;
 
     const result = await request.get(url);
 
@@ -16,7 +17,10 @@ export const getAll = async (blogId) => {
 
 export const create = async (blogId, comment, userName, token) => {
 
+    
     const result = await request.post(baseUrl, { blogId, comment, userName}, token);
+    
+    console.log(result);
 
     return result;
 }
