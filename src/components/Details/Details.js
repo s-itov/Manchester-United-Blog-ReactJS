@@ -19,7 +19,7 @@ export const Details = () => {
     const { userId, isAuthenticated, token } = useContext(BlogContext);
 
     const [blog, setBlog] = useState({});
-    const [author, setAuthor] = useState({ userName: "Loading..."})
+    const [author, setAuthor] = useState({ userName: "Loading..." })
     const [isLoading, setIsLoading] = useState(true);
 
 
@@ -79,24 +79,24 @@ export const Details = () => {
             </div>
 
             <div className="comments-section">
-                {blog.comments && blog.comments.length === 0  ?
+                {blog.comments && blog.comments.length === 0 ?
                     <h3>No comments yet on this blog post...</h3>
                     :
                     <>
                         <h3>Comments:</h3>
-                        <ul className="comments-list">
+                        <ul className="comment">
                             {blog.comments && blog.comments.map(x => (
                                 <li key={x._id} className="comment">
-                                    <span className="username">{x.userName}: </span>
-                                    <span className="comment-text">{x.comment}</span>
-                                    <span className="comment-time">{moment(x._createdOn).fromNow()}</span>
-
+                                    <div class="comment-header">
+                                        <span className="username">{x.userName}: </span>
+                                        <span className="time">{moment(x._createdOn).fromNow()}</span>
+                                    </div>
+                                    <div class="comment-body">{x.comment}</div>
                                 </li>
                             ))}
                         </ul>
                     </>
                 }
-
 
                 {canComment && <AddComment onCommentSubmit={onCommentSubmit} />}
 
