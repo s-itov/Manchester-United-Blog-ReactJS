@@ -82,6 +82,12 @@
   margin-bottom: 8px;
 }
 
+.comment li:last-child{
+  list-style: none;
+  margin-bottom: 0px;
+}
+
+
 .comment-header {
   display: flex;
   justify-content: space-between;
