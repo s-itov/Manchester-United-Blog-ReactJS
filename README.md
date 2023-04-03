@@ -1,4 +1,4 @@
-# Manchester United Blog React.js Project
+# <img align="left" width="20" height="20" src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c4e7.png">  Manchester United Blog React.js Project
 
 ## About The Project - Non-technical Description
 
