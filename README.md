@@ -1,6 +1,57 @@
-# Getting Started with Create React App
+# Manchester United Blog React.js Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About The Project - Non-technical Description
+
+The project is designed as a football blog platform for the fans of Manchester United FC. The main "unit" in this platform is the blogs section which can be viewed, created, modified, comented and deleted depending on certain user roles.
+
+This [project](https://github.com/s-itov/Manchester-United-Blog-ReactJS.git) was created by [Simeon Itov](https://github.com/s-itov) for the purposes of React. js Softuni Course, Feb-April 2023.
+
+![Project Dashboard](https://i.ibb.co/6mnccCP/1.png)
+
+
+## Public part
+
+This part of the platform is designed for non-registered users. These users have access to the following:
+
+* Home page -> 
+Main dashboard page in which the user can find basic information about the site as well as the latest blogs. All users can see the live table in the Birtish Premier League as well as the next fixture of the club.
+* Blogs -> 
+Blogs catalog page which lists all available blogs created by the creators /authors/.
+* Blog Details Page -> 
+A page offering more detailed information about the blog article such as: image, title, short description, author, submission date details, the main text and all the comments posted by the registered users.
+* Creators-> 
+A page listing all blog creators registered in the platform with their avatars, names, emails and about info.
+* Login-> 
+A page where the login form for already registered users is located.
+* Register-> 
+A page where the register form for non-users is located.
+
+## Private part
+
+### Blog creators private pages
+
+* Profile -> 
+The page where a blog creator can view their user information as well as the blogs they've created. 
+* Create Blog -> 
+A page with a form for creation of blogs.
+* Edit Blog -> 
+A page with a form for modification of a particularly selected blog, part of their blogs.
+* Delete Blog -> 
+A page with a confirmation about the deletion of particularly selected blog, part of their blogs.
+
+## About The Project - Technical Description
+
+### Built With
+
+* [HTML + CSS designed by Simeon Itov](https://github.com/s-itov)
+* [React.js](https://reactjs.org/)
+* [SoftUni practice server](https://github.com/softuni-practice-server/softuni-practice-server.git)
+
+## To start the practice server:
+
+In the project directory navigate to server directory with command  `cd server`.
+
+To execute it - manually open a command prompt and run command `node server.js`.
 
 ## Available Scripts
 
@@ -9,15 +60,10 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
 ### `npm run build`
 
@@ -27,44 +73,8 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
+## Learn More About React JS
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
