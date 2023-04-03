@@ -59,7 +59,7 @@ While you are located in the server directory. To execute the server run the fol
 
 ### Authentication
 
-The service is initialized with three users, which can be used for immediate testing:
+The server is initialized with two users, which can be used for immediate testing:
 * peter@abv.bg : 123456
 * john@abv.bg : 123456
 
