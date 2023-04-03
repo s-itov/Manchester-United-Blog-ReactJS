@@ -1,4 +1,5 @@
-# <img align="left" width="80" height="80" src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c4e7.png">  Manchester United Blog React.js Project
+# <img align="left" width="50" height="50" src="https://assets.stickpng.com/images/580b57fcd9996e24bc43c4e7.png">  Manchester United Blog React.js Project
+
 
 ## About The Project - Non-technical Description
 
