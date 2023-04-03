@@ -49,13 +49,19 @@ A page with a confirmation about the deletion of particularly selected blog, par
 * [React.js](https://reactjs.org/)
 * [SoftUni practice server](https://github.com/softuni-practice-server/softuni-practice-server.git)
 
-## To start the practice server:
+### To start the practice server:
 
 When you are in the project directory:
 
 Open a command prop window and navigate to the server directory with command  `cd server`.
 
 While you are located in the server directory. To execute the server run the following command:  `node server.js`.
+
+### Authentication
+
+The service is initialized with three users, which can be used for immediate testing:
+* peter@abv.bg : 123456
+* john@abv.bg : 123456
 
 ## Available Scripts
 
