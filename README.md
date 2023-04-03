@@ -2,7 +2,8 @@
 
 ## About The Project - Non-technical Description
 
-The project is designed as a football blog platform for the fans of Manchester United FC. The main "unit" in this platform is the blogs section which can be viewed, created, modified, comented and deleted depending on certain user roles.
+The project is designed as a football blog platform for the fans of Manchester United FC. 
+The main "unit" in this platform is the blogs section which can be viewed, created, modified, comented and deleted depending on certain user roles.
 
 This [project](https://github.com/s-itov/Manchester-United-Blog-ReactJS.git) was created by [Simeon Itov](https://github.com/s-itov) for the purposes of React. js Softuni Course, Feb-April 2023.
 
@@ -39,6 +40,7 @@ A page with a form for modification of a particularly selected blog, part of the
 * Delete Blog -> 
 A page with a confirmation about the deletion of particularly selected blog, part of their blogs.
 
+
 ## About The Project - Technical Description
 
 ### Built With
@@ -49,9 +51,11 @@ A page with a confirmation about the deletion of particularly selected blog, par
 
 ## To start the practice server:
 
-In the project directory navigate to server directory with command  `cd server`.
+When you are in the project directory:
 
-To execute it - manually open a command prompt and run command `node server.js`.
+Open a command prop window and navigate to the server directory with command  `cd server`.
+
+While you are located in the server directory. To execute the server run the following command:  `node server.js`.
 
 ## Available Scripts
 
