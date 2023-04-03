@@ -35,7 +35,7 @@ A page where the register form for non-users is located.
 * Profile -> 
 The page where a blog creator can view their user information as well as the blogs they've created. 
 * Create Blog -> 
-A page with a form for creation of blogs.
+A page with a form for creating a blog.
 * Edit Blog -> 
 A page with a form for modification of a particularly selected blog, part of their blogs.
 * Delete Blog -> 
