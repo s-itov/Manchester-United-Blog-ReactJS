@@ -16,7 +16,7 @@ export const AddComment = ({
 
     return (
         <div className="add-comment-section">
-            <h3>Add Comment</h3>
+            <h3 className="add-comment">Add Comment</h3>
             <form className="comment-form" onSubmit={onSubmit}>
                 <label htmlFor="comment-text">Comment:</label>
                 <textarea id="comment-text" name="comment" value={values.comment} onChange={changeHandler}></textarea>

@@ -80,7 +80,7 @@ export const Details = () => {
 
             <div className="comments-section">
                 {blog.comments && blog.comments.length === 0 ?
-                    <h3>No comments yet on this blog post...</h3>
+                    <h3 className="no-comment">No comments yet on this blog post...</h3>
                     :
                     <>
                         <h3>Comments:</h3>
@@ -91,7 +91,7 @@ export const Details = () => {
                                         <span className="username">{x.userName}: </span>
                                         <span className="time">{moment(x._createdOn).fromNow()}</span>
                                     </div>
-                                    <div class="comment-body">{x.comment}</div>
+                                    <div className="comment-body">{x.comment}</div>
                                 </li>
                             ))}
                         </ul>

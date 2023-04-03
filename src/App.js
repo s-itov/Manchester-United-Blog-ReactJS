@@ -28,20 +28,19 @@ function App() {
 
     const [auth, setAuth] = useLocalStorage('auth', {});
 
+
     useEffect(() => {
-        blogService.getAll()
-            .then(result => {
-                setBlogs(result);
+        Promise.all([
+            blogService.getAll(),
+            creatorService.getAll(),
+        ])
+            .then(([blogsData, creatorsData]) => {
+                setBlogs(blogsData);
+                setCreators(creatorsData);
             })
     }, []);
 
 
-    useEffect(() => {
-        creatorService.getAll()
-            .then(result => {
-                setCreators(result);
-            })
-    }, []);
 
     const onCreateBlogSubmit = async (data) => {
         const newBlog = await blogService.create(data, auth.accessToken);
