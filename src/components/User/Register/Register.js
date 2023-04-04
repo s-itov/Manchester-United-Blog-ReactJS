@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { useForm } from "../../hooks/useForm"
+import { useForm } from "../../../hooks/useForm";
 import { Link } from "react-router-dom";
 
-import { BlogContext } from "../../contexts/blogContext"
+import { BlogContext } from "../../../contexts/blogContext";
 
 import "./register.css";
 
