@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 import { formatDate } from "../../utils/dateUtils";
 import { BlogContext } from "../../contexts/blogContext";
+
 import * as blogService from "../../services/blogService";
 import * as loading from "../../utils/defaultConstants"
 
+import "./blog-card.css";
 
 export const BlogItem = ({
     _ownerId,

@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { BlogContext } from "../../contexts/blogContext";
 import { Creator } from "./Creator";
 
+import "./creator-card.css"
+
 export const Creators = () => {
 
     const { creators } = useContext(BlogContext);

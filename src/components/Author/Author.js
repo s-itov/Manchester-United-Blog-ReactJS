@@ -5,6 +5,8 @@ import { BlogItem } from "../Blogs/BlogItem";
 import * as authService from "../../services/authService";
 import * as loading from "../../utils/defaultConstants";
 
+import './author-card.css';
+
 export const Author = () => {
 
     const { token, blogs} = useContext(BlogContext);

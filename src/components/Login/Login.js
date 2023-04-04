@@ -4,6 +4,8 @@ import { BlogContext } from '../../contexts/blogContext';
 
 import { useForm } from '../../hooks/useForm';
 
+import "./login.css";
+
 export const Login = () => {
     const { onLoginSubmit } = useContext(BlogContext);
     const { values, changeHandler, onSubmit } = useForm({

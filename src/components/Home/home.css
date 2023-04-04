@@ -60,3 +60,23 @@
     bottom: 0px;
   }
   
+
+  aside {
+    display: flex;
+    flex-direction: column;  
+    margin-left: auto;
+  }
+  
+  .league-table {
+    margin-bottom: 20px;
+    border: 1px solid rgba(171, 166, 166, 0.2);
+    border-radius: 6px ;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .next-game {
+    border-radius: 6px;
+    border: 1px solid rgba(171, 166, 166, 0.2);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  }
+  

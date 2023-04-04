@@ -3,6 +3,8 @@ import { BlogItem } from '../Blogs/BlogItem';
 import { useContext } from 'react';
 import { BlogContext } from '../../contexts/blogContext';
 
+import "./home.css";
+
 
 export const Home = () => {
 

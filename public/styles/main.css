@@ -8,36 +8,12 @@
     font-family: Helvetica, sans-serif;
   }
   
-  /* Main Content styles */
   main {
     min-height: 80vh;
     padding: 10px;
   }
-
-  .not-found {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-  }
-
-  .not-found h1{
-    font-size: 48px;
-    margin-bottom: 20px;
-  }
-
-
-  .not-found a {
-    font-size: 26px;
-    color: black;    
-  }
   
-  /* Footer styles */
-  footer {
-    text-align: center;
-    padding: 80px;
-    background-color: #2a2a2a;
-    color: white;
-  }
+
 
 
 

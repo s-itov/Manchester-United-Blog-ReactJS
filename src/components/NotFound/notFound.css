@@ -1,0 +1,16 @@
+.not-found {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.not-found h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+
+.not-found a {
+    font-size: 26px;
+    color: black;
+}

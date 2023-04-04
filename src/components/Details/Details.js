@@ -9,8 +9,8 @@ import * as loading from "../../utils/defaultConstants"
 import * as blogService from '../../services/blogService';
 import * as commentService from '../../services/commentService';
 
-
 import { AddComment } from './AddComment/AddComment';
+import "./details.css";
 
 export const Details = () => {
 
@@ -38,6 +38,8 @@ export const Details = () => {
                 setIsLoading(false);
             })
     }, [blogId]);
+
+
 
 
     const onCommentSubmit = async (values) => {

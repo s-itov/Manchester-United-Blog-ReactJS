@@ -28,7 +28,6 @@ function App() {
 
     const [auth, setAuth] = useLocalStorage('auth', {});
 
-
     useEffect(() => {
         Promise.all([
             blogService.getAll(),
@@ -39,8 +38,6 @@ function App() {
                 setCreators(creatorsData);
             })
     }, []);
-
-
 
     const onCreateBlogSubmit = async (data) => {
         const newBlog = await blogService.create(data, auth.accessToken);
@@ -69,9 +66,14 @@ function App() {
         navigate(`/blogs/${values._id}`);
     }
 
-    const onLoginSubmit = async (data) => {
+    const onLoginSubmit = async (values) => {
+        if (values.email === '' || values.passwords === '') {
+            alert('All fields are required!');
+            return;
+        }
+
         try {
-            const result = await authService.login(data);
+            const result = await authService.login(values);
             setAuth(result);
             navigate('/');
 
@@ -87,16 +89,17 @@ function App() {
             return;
         }
 
-        try {
+        if (values.userName === '' || values.email === '' || values.country === '' || values.about === '' || values.avatarUrl === '') {
+            alert('All fields are required!');
+            return;
+        }
 
+        try {
             const result = await authService.register(registerData);
             await creatorService.create(registerData);
             setAuth(result);
-
             setCreators(state => [...state, registerData]);
-
             navigate('/');
-
 
         } catch (error) {
             alert(error.message);

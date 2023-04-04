@@ -2,6 +2,8 @@ import { useForm } from '../../hooks/useForm';
 import { useContext } from 'react';
 import { BlogContext } from '../../contexts/blogContext';
 
+import "./create.css";
+
 export const Create = () => {
 
     const { onCreateBlogSubmit } = useContext(BlogContext);
