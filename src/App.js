@@ -24,20 +24,12 @@ import { Creators } from './components/Creators/Creators';
 function App() {
     const navigate = useNavigate();
     const [blogs, setBlogs] = useState([]);
-    const [creators, setCreators] = useState([]);
-
     const [auth, setAuth] = useLocalStorage('auth', {});
 
     useEffect(() => {
-        Promise.all([
-            blogService.getAll(),
-            creatorService.getAll(),
-        ])
-            .then(([blogsData, creatorsData]) => {
-                setBlogs(blogsData);
-                setCreators(creatorsData);
-            })
-    }, []);
+        blogService.getAll()
+        .then(result => setBlogs(result))
+    },[])
 
     const onCreateBlogSubmit = async (data) => {
         const newBlog = await blogService.create(data, auth.accessToken);
@@ -84,13 +76,14 @@ function App() {
 
     const onRegisterSubmit = async (values) => {
         const { confirmPassword, ...registerData } = values;
-        if (confirmPassword !== values.password) {
-            alert('The passwords dont match!');
+        
+        if (values.userName === '' || values.email === '' || values.country === '' || values.about === '' || values.avatarUrl === '') {
+            alert('All fields are required!');
             return;
         }
 
-        if (values.userName === '' || values.email === '' || values.country === '' || values.about === '' || values.avatarUrl === '') {
-            alert('All fields are required!');
+        if (confirmPassword !== values.password) {
+            alert('The passwords dont match!');
             return;
         }
 
@@ -98,7 +91,6 @@ function App() {
             const result = await authService.register(registerData);
             await creatorService.create(registerData);
             setAuth(result);
-            setCreators(state => [...state, registerData]);
             navigate('/');
 
         } catch (error) {
@@ -121,7 +113,6 @@ function App() {
         onRegisterSubmit,
         onLogout,
         blogs,
-        creators,
         userId: auth._id,
         userName: auth.userName,
         userEmail: auth.email,

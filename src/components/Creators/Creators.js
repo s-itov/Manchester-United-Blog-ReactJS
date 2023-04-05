@@ -1,12 +1,18 @@
-import { useContext } from "react";
-import { BlogContext } from "../../contexts/blogContext";
+import { useEffect, useState } from "react";
 import { Creator } from "./Creator";
+import * as creatorService from '../../services/creatorService';
 
 import "./creator-card.css"
 
 export const Creators = () => {
 
-    const { creators } = useContext(BlogContext);
+    const [creators, setCreators] = useState([]);
+
+    useEffect(() => {
+        creatorService.getAll()
+        .then(result => setCreators(result),)
+
+    },[])
 
     return (
         <section className="creator-cards">
