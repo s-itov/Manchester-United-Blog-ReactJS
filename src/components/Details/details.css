@@ -33,8 +33,6 @@
 	border-radius: 50%;
 }
 
-
-
 .post-title {
   font-size: 28px;
   padding: 16px 20px;
@@ -56,6 +54,24 @@
   color: #333;
   text-align: justify;
 }
+
+.category {
+  margin-left: 20px;
+}
+
+.post-category {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: 1px solid #d30c28;
+  padding: 0px 6px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  margin-left: 6px;
+  color: #d30c28;
+  text-align: justify;
+}
+
 
 .comments-section {
   margin: 2rem auto;

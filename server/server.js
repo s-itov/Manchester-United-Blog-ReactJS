@@ -1371,8 +1371,14 @@
             }
         },
         comments: {
-
-        },
+            "4442c107-7a9b-4dc9-9b86-db6b4b4b15c4": {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "blogId": "126777f5-3277-42ad-b874-76d043b069cb",
+                "comment": "Bruno Fernandes has played the most football in Europe’s top five leagues this season! In total of 3751 minutes! What a player!",
+                "userName": "Peter",
+                "_createdOn": 1680690396020,
+            }
+        }
     };
     var rules$1 = {
         users: {

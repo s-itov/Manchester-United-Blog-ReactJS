@@ -10,8 +10,7 @@ export const Creators = () => {
 
     useEffect(() => {
         creatorService.getAll()
-        .then(result => setCreators(result),)
-
+        .then(result => setCreators(result))
     },[])
 
     return (
@@ -19,7 +18,7 @@ export const Creators = () => {
             {creators.map(x=> <Creator key={x._id} {...x} />)}
 
             {creators.length === 0 && 
-                <h3>No authors yet...</h3>}
+                <h3 className="no-creators">No creators yet...</h3>}
         </section>
     );
 }

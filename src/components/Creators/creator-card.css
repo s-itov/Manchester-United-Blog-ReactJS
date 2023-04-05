@@ -1,3 +1,7 @@
+.no-creators {
+  font-size: 40px;
+}
+
 .creator-cards {
     margin: 20px;
     display: grid;
