@@ -42,7 +42,7 @@ A page with a form for modification of a particularly selected blog, part of the
 A page with a confirmation about the deletion of particularly selected blog, part of their blogs.
 * Comments -> 
 Guest and users are able to read the comments in the blogs. 
-Owners of a blog can not comment on a blog they have created. 
+Owners of a blog can not comment a blog they have created. 
 Logged in useres can comment all the blogs that they have not created.
 
 ## About The Project - Technical Description
