@@ -1,8 +1,6 @@
 const request = async (method, url, data, token) => {
 
-  
     const options = {};
-
     
     if (method !== 'GET') {
         options.method = method;
