@@ -13,6 +13,8 @@ export const BlogProvider = ({
     children,
 }) => {
 
+
+
     const navigate = useNavigate();
 
     const [blogs, setBlogs] = useState([]);
@@ -81,7 +83,7 @@ export const BlogProvider = ({
 
         try {
             const result = await authService.register(registerData);
-            await creatorService.create(registerData);
+            await creatorService.create(registerData, result.accessToken);
             setAuth(result);
             navigate('/');
 

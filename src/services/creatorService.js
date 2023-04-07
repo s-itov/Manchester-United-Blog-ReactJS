@@ -1,6 +1,6 @@
 import * as request from '../services/requester'
 
-const baseUrl = 'http://localhost:3030/jsonstore/creators'
+const baseUrl = 'http://localhost:3030/data/creators'
 
 export const getAll = async () => {
     const result = await request.get(baseUrl);
@@ -9,9 +9,9 @@ export const getAll = async () => {
     return blogs;
 }
 
-export const create = async ({userName, email, avatarUrl, country, about}) => {
+export const create = async ({userName, email, avatarUrl, country, about}, token) => {
 
-    const result = await request.post(baseUrl, {userName, email, avatarUrl, country, about});
+    const result = await request.post(baseUrl, {userName, email, avatarUrl, country, about}, token);
 
     return result;
 }
