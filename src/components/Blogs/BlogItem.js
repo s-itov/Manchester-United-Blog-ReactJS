@@ -6,7 +6,7 @@ import { useBlogContext } from "../../contexts/blogContext";
 import * as blogService from "../../services/blogService";
 import * as loading from "../../utils/defaultConstants"
 
-import "./blog-card.css";
+import "./BlogItem.css";
 
 export const BlogItem = ({
     _ownerId,

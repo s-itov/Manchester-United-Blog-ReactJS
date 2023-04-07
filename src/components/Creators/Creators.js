@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Creator } from "./Creator";
 import * as creatorService from '../../services/creatorService';
 
-import "./creator-card.css"
+import "./Creator.css"
 
 export const Creators = () => {
 

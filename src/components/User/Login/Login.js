@@ -3,7 +3,7 @@ import { useBlogContext } from '../../../contexts/blogContext';
 
 import { useForm } from '../../../hooks/useForm';
 
-import "./login.css";
+import "./Login.css";
 
 export const Login = () => {
     const { onLoginSubmit } = useBlogContext();

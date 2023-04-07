@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { BlogItem } from '../Blogs/BlogItem';
 import { useBlogContext } from '../../contexts/blogContext';
 
-import "./home.css";
+import "./Home.css";
 
 
 export const Home = () => {

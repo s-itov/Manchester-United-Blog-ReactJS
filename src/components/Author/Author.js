@@ -4,7 +4,7 @@ import { BlogItem } from "../Blogs/BlogItem";
 import * as authService from "../../services/authService";
 import * as loading from "../../utils/defaultConstants";
 
-import './author-card.css';
+import './Author.css';
 
 export const Author = () => {
 

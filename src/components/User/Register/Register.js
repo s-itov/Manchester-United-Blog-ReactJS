@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { useBlogContext } from "../../../contexts/blogContext";
 
-import "./register.css";
+import "./Register.css";
 
 export const Register = () => {
     const { onRegisterSubmit } = useBlogContext();

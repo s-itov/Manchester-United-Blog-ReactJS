@@ -1,7 +1,7 @@
 import { useForm } from '../../hooks/useForm';
 import { useBlogContext } from '../../contexts/blogContext';
 
-import "./create.css";
+import "./Create.css";
 
 export const Create = () => {
 

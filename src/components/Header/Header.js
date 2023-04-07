@@ -2,7 +2,7 @@ import { Link, NavLink } from 'react-router-dom';
 
 import { useBlogContext } from '../../contexts/blogContext';
 
-import "./header.css";
+import "./Header.css";
 
 export const Header = () => {
 

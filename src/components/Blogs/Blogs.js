@@ -2,7 +2,7 @@ import { BlogItem } from "./BlogItem"
 import { useContext } from "react";
 import { BlogContext } from "../../contexts/blogContext";
 
-import "./blog-card.css";
+import "./BlogItem.css";
 
 
 export const Blogs = () => {

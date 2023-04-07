@@ -9,7 +9,7 @@ import * as blogService from '../../services/blogService';
 import * as commentService from '../../services/commentService';
 
 import { AddComment } from './AddComment/AddComment';
-import "./details.css";
+import "./Details.css";
 
 export const Details = () => {
     const { blogId } = useParams();
