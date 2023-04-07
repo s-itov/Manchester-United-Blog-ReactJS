@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 import { useState, useEffect } from 'react';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useNavigate } from "react-router-dom";
@@ -119,4 +119,12 @@ export const BlogProvider = ({
             {children}
         </BlogContext.Provider>
     );
+}
+
+export const useBlogContext = () => {
+
+    const context = useContext(BlogContext);
+
+    return context;
+
 }

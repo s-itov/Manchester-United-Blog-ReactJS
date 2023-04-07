@@ -1,13 +1,12 @@
-import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
-import { BlogContext } from '../../contexts/blogContext';
+import { useBlogContext } from '../../contexts/blogContext';
 
 import "./header.css";
 
 export const Header = () => {
 
-    const { isAuthenticated, userName } = useContext(BlogContext);
+    const { isAuthenticated, userName } = useBlogContext();
 
     return (
         <header>

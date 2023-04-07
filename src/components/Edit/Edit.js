@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useContext } from 'react';
-import { BlogContext } from '../../contexts/blogContext';
+import { useBlogContext } from '../../contexts/blogContext';
 
 import * as blogService from '../../services/blogService';
 import { useForm } from '../../hooks/useForm';
@@ -9,7 +8,7 @@ import { useForm } from '../../hooks/useForm';
 
 export const Edit = () => {
 
-    const { onEditBlogSubmit } = useContext(BlogContext);
+    const { onEditBlogSubmit } = useBlogContext();
 
     const { blogId } = useParams();
 

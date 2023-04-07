@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { useContext } from "react";
-import { BlogContext } from "../../contexts/blogContext";
+import { useBlogContext } from "../../contexts/blogContext";
 import { BlogItem } from "../Blogs/BlogItem";
 import * as authService from "../../services/authService";
 import * as loading from "../../utils/defaultConstants";
@@ -9,7 +8,7 @@ import './author-card.css';
 
 export const Author = () => {
 
-    const { token, blogs } = useContext(BlogContext);
+    const { token, blogs } = useBlogContext();
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 

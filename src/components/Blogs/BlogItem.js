@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { formatDate } from "../../utils/dateUtils";
-import { BlogContext } from "../../contexts/blogContext";
+import { useBlogContext } from "../../contexts/blogContext";
 
 import * as blogService from "../../services/blogService";
 import * as loading from "../../utils/defaultConstants"
@@ -17,7 +17,7 @@ export const BlogItem = ({
     description,
 }) => {
 
-    const { onBlogDelete, userId } = useContext(BlogContext);
+    const { onBlogDelete, userId } = useBlogContext();
     const [author, setAuthor] = useState({ userName: "Loading..." })
     const [isLoading, setIsLoading] = useState(true);
 

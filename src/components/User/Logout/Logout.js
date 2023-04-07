@@ -1,10 +1,10 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { Navigate } from "react-router-dom";
 
-import { BlogContext } from "../../../contexts/blogContext";
+import { useBlogContext } from "../../../contexts/blogContext";
 
 export const Logout = () => {
-    const { onLogout } = useContext(BlogContext);
+    const { onLogout } = useBlogContext();
 
     useEffect(() => {
         onLogout();

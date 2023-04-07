@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useContext } from 'react';
 import moment from 'moment/moment';
 
-import { BlogContext } from '../../contexts/blogContext';
+import { useBlogContext } from '../../contexts/blogContext';
 import { formatDate } from "../../utils/dateUtils";
 import * as loading from "../../utils/defaultConstants"
 import * as blogService from '../../services/blogService';
@@ -14,7 +13,7 @@ import "./details.css";
 
 export const Details = () => {
     const { blogId } = useParams();
-    const { userId, isAuthenticated, token } = useContext(BlogContext);
+    const { userId, isAuthenticated, token } = useBlogContext();
 
     const [blog, setBlog] = useState({});
     const [author, setAuthor] = useState({ userName: "Loading..." })
@@ -45,7 +44,6 @@ export const Details = () => {
             comments: [...state.comments, response],
         }));
     };
-
 
     const isOwner = blog._ownerId === userId;
     const canComment = !isOwner && isAuthenticated;

@@ -1,14 +1,13 @@
 import { Link } from 'react-router-dom';
 import { BlogItem } from '../Blogs/BlogItem';
-import { useContext } from 'react';
-import { BlogContext } from '../../contexts/blogContext';
+import { useBlogContext } from '../../contexts/blogContext';
 
 import "./home.css";
 
 
 export const Home = () => {
 
-    const { blogs, isAuthenticated, userName } = useContext(BlogContext);
+    const { blogs, isAuthenticated, userName } = useBlogContext();
 
     return (
         <>

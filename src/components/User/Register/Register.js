@@ -1,13 +1,12 @@
-import { useContext } from "react";
 import { useForm } from "../../../hooks/useForm";
 import { Link } from "react-router-dom";
 
-import { BlogContext } from "../../../contexts/blogContext";
+import { useBlogContext } from "../../../contexts/blogContext";
 
 import "./register.css";
 
 export const Register = () => {
-    const { onRegisterSubmit } = useContext(BlogContext);
+    const { onRegisterSubmit } = useBlogContext();
 
     const { values, changeHandler, onSubmit } = useForm({
         userName: '',

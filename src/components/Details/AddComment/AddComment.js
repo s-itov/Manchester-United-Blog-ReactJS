@@ -1,12 +1,11 @@
 import { useForm } from '../../../hooks/useForm';
-import { useContext } from 'react';
-import { BlogContext } from '../../../contexts/blogContext';
+import { useBlogContext } from '../../../contexts/blogContext';
 
 export const AddComment = ({
     onCommentSubmit
 }) => {
 
-    const { userName } = useContext(BlogContext);
+    const { userName } = useBlogContext();
 
 
     const { values, changeHandler, onSubmit } = useForm({
