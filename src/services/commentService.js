@@ -1,6 +1,10 @@
 import * as request from '../services/requester';
 
-const baseUrl = "http://localhost:3030/data/comments";
+const url= process.env.NODE_ENV === 'development' 
+    ? 'http://localhost:3030'
+    : 'http://localhost:3031';
+
+const baseUrl = `${url}/data/comments`;
 
 export const getAll = async (blogId) => {
     const searchQuery = encodeURIComponent(`blogId="${blogId}"`);

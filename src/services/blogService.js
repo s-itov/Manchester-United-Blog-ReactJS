@@ -1,6 +1,10 @@
 import * as request from './requester';
 
-const baseUrl = "http://localhost:3030/data/blogs";
+const url= process.env.NODE_ENV === 'development' 
+    ? 'http://localhost:3030'
+    : 'http://localhost:3031';
+
+const baseUrl = `${url}/data/blogs`;
 
 export const getAll = async () => {
     const result = await request.get(baseUrl);

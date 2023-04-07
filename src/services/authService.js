@@ -1,6 +1,10 @@
 import * as request from './requester';
 
-const baseUrl = 'http://localhost:3030/users'
+const url= process.env.NODE_ENV === 'development' 
+    ? 'http://localhost:3030'
+    : 'http://localhost:3031';
+
+const baseUrl = `${url}/users`;
 
 export const login = (loginData) =>  request.post(`${baseUrl}/login`, loginData);
 
