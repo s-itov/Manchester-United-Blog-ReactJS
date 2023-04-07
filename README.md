@@ -8,7 +8,7 @@ The main "unit" in this platform is the blogs section which can be viewed, creat
 
 This [project](https://github.com/s-itov/Manchester-United-Blog-ReactJS.git) was created by [Simeon Itov](https://github.com/s-itov) for the purposes of React. js Softuni Course, Feb-April 2023.
 
-[View it Live /without data/](https://man-united-blog.web.app/)
+[View it deployed /without data/](https://man-united-blog.web.app/)
 
 ![Project Dashboard](https://i.ibb.co/GWZvY0G/man-u-blog.png)
 
