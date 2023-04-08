@@ -60,6 +60,7 @@ nav li a:hover {
   padding: 12px 14px;
 }
 
+
 .active {
   background-color: rgba(256, 256, 256, .9);
   color: #E71D36;
