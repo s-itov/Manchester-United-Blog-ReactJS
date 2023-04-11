@@ -2,9 +2,9 @@ import * as request from '../services/requester'
 
 const url= process.env.NODE_ENV === 'development' 
     ? 'http://localhost:3030'
-    : 'http://localhost:3031';
+    : 'http://13.51.249.118:3030';
 
-const baseUrl = `${url}/data/creators`
+const baseUrl = `${url}/data/creators`;
 
 export const getAll = async () => {
     const result = await request.get(baseUrl);
