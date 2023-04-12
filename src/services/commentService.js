@@ -2,7 +2,7 @@ import * as request from '../services/requester';
 
 const url= process.env.NODE_ENV === 'development' 
     ? 'http://localhost:3030'
-    : 'http://13.51.249.118:3030';
+    : 'https://practice-server-man.onrender.com';
 
 const baseUrl = `${url}/data/comments`;
 
